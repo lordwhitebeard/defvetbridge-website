@@ -7,3 +7,4 @@ The one-page public website for DefVetBridge (DVB): what it is, how it works, an
 - Donations go through PayPal (hosted button `S4E4LCPC5ER3N`).
 
 This repository holds only the public website. The DVB application itself lives elsewhere.
+
