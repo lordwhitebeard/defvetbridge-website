@@ -114,6 +114,22 @@ section.band>.wrap{display:grid;gap:2rem}
 .steps li::before{content:"Step " counter(s);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
 .steps p{color:var(--ink-soft);font-size:1rem}
 
+/* free guide */
+.guide{display:grid;grid-template-columns:auto 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:clamp(1.6rem,4vw,2.8rem)}
+.guide>*{min-width:0}
+.guide .thumb{display:block;width:clamp(11rem,22vw,15rem);transform:rotate(-1.5deg);border:1px solid var(--rule);box-shadow:0 18px 36px -20px rgba(16,47,76,.45);border-radius:3px;overflow:hidden;background:#fff}
+.guide .thumb img{display:block;width:100%;height:auto}
+.guide .copy{display:grid;gap:1rem}
+.guide .copy>p{color:var(--ink-soft)}
+.guide ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.guide li{display:grid;grid-template-columns:2rem 1fr;gap:.7rem;align-items:start}
+.guide li .n{width:2rem;height:2rem;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.95rem}
+.guide li span{color:var(--ink-soft)}.guide li b{color:var(--ink)}
+.guide .dl{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:.3rem}
+.guide .meta{font-size:.88rem;color:var(--ink-soft)}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}.btn-green:hover{background:#163523;border-color:#163523}
+.hero .guide-link{font-size:.95rem;color:var(--ink-soft)}.hero .guide-link a{font-weight:700}
+
 /* the work: inside a claim pack */
 .pack{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.5rem;align-items:center}
 .pack>*{min-width:0}
@@ -179,13 +195,16 @@ footer .bottom a{color:var(--ink-soft)}
   nav.sections{order:3;width:100%;margin:0;flex-wrap:wrap;justify-content:flex-start;gap:.1rem .2rem}
 }
 @media (max-width:900px){
-  .hero,.why,.pack,.donate .split,.final{grid-template-columns:1fr}
+  .hero,.why,.pack,.donate .split,.final,.guide{grid-template-columns:1fr}
+  .guide .thumb{justify-self:center}
   .steps,.caps,.tiers{grid-template-columns:repeat(2,1fr)}
   .record{transform:none}
   .sheets li:nth-child(n){margin-left:0}
 }
 @media (max-width:640px){
   nav.sections a{font-size:.9rem;padding:.45em .55em}
+  nav.sections{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:2rem}
+  nav.sections::-webkit-scrollbar{display:none}
   .problem,.steps,.caps,.tiers{grid-template-columns:1fr}
   header.top .brand span{display:none}
   header.top .brand img{height:44px}
@@ -202,6 +221,7 @@ footer .bottom a{color:var(--ink-soft)}
     <a href="#why">Why DVB</a>
     <a href="#what">What it does</a>
     <a href="#how">How it works</a>
+    <a href="#guide">Free guide</a>
     <a href="#pack">The claim pack</a>
     <a href="#support">Support DVB</a>
     <a href="#faq">FAQ</a>
@@ -220,6 +240,7 @@ footer .bottom a{color:var(--ink-soft)}
       <a class="btn btn-quiet" href="#how">How it works</a>
     </div>
     <p class="small">Built by a veteran going through the DVA claims process himself.</p>
+    <p class="guide-link">Starting a claim? <a href="#guide">Get the free guide to gathering your records</a></p>
   </div>
 
   <figure class="record" aria-label="Example of a service medical record with one entry highlighted as evidence">
@@ -295,6 +316,25 @@ footer .bottom a{color:var(--ink-soft)}
   </div>
 </section>
 
+<section class="band" id="guide">
+  <div class="wrap">
+    <div class="guide">
+      <a class="thumb" href="DVB_Getting_Ready_For_Your_DVA_Claim.pdf" target="_blank" rel="noopener" aria-label="Open the free guide (PDF)"><img src="guide-preview.jpg" alt="First page of the guide: Getting ready for your DVA claim" width="720" height="1018" loading="lazy"></a>
+      <div class="copy">
+        <span class="eyebrow">Free guide, for any veteran</span>
+        <h2>Getting ready for your DVA claim</h2>
+        <p>Most of a claim comes from your records, and getting them is the first hold-up. This two-page guide shows you how to get them and what else to have ready. It is useful whether or not you use DVB.</p>
+        <ul>
+          <li><span class="n">1</span><span><b>Your Defence records.</b> What to ask for, the fastest way to request them through ServiceConnect, and the Defence form to use if you cannot sign in.</span></li>
+          <li><span class="n">2</span><span><b>Your DVA file</b>, if you have claimed before. Where to see your accepted conditions, and how to ask for the rest with a free information request.</span></li>
+          <li><span class="n">3</span><span><b>The details your records don't hold.</b> A one-page form for contact details, next of kin, GP, advocate and accepted conditions. Fill it in on screen or print it.</span></li>
+        </ul>
+        <div class="dl"><a class="btn btn-green" href="DVB_Getting_Ready_For_Your_DVA_Claim.pdf" target="_blank" rel="noopener">Download the free guide</a><span class="meta">PDF, 2 pages, fill in on screen or print</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="pack">
   <div class="wrap pack">
     <div class="copy">
@@ -362,6 +402,7 @@ footer .bottom a{color:var(--ink-soft)}
       <details><summary>Will it tell me whether my claim will succeed?</summary><p>No. DVB shows what your records support and where the gaps are. It never gives odds of success, because only the DVA decides a claim.</p></details>
       <details><summary>Is it legal or medical advice?</summary><p>No. DVB organises evidence. It works alongside your advocate and your doctor, not instead of them. It never fills in the parts of a form that only a doctor can complete.</p></details>
       <details><summary>Who can see my records?</summary><p>Only you, and an advocate you choose to give access to. Each veteran's records are kept separate at the database level, and nothing is deleted without a record of what was removed.</p></details>
+      <details><summary>Is there anything I can do now, before DVB is open?</summary><p>Yes. Start gathering your records. The <a href="#guide">free guide</a> shows how to request your Defence and DVA records and what other details to have ready. Records can take around 30 days to arrive, so it is worth starting early.</p></details>
       <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. Donations help open it to more veterans and advocates sooner.</p></details>
       <details><summary>Is DefVetBridge part of the DVA or Defence?</summary><p>No. It is an independent project built by a veteran. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></details>
     </div>
@@ -391,7 +432,7 @@ footer .bottom a{color:var(--ink-soft)}
   <p>DefVetBridge is an independent project. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence. It organises evidence and does not provide legal, medical or financial advice.</p>
   <div class="bottom">
     <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans</span>
-    <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
+    <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#guide">Free guide</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
   </div>
 </footer>
 </div>
@@ -402,7 +443,7 @@ footer .bottom a{color:var(--ink-soft)}
  function hh(){document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')}
  function upd(){h.classList.toggle('stuck',scrollY>4);let cur=null;const y=scrollY+innerHeight*0.35;
   for(const s of secs){if(s.offsetTop<=y)cur=s.id}
-  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
+  links.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;if(on&&!a.classList.contains('on')&&a.parentNode.scrollWidth>a.parentNode.clientWidth){a.parentNode.scrollTo({left:a.offsetLeft-16,behavior:'smooth'})}a.classList.toggle('on',on)})}
  addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{hh();upd()});hh();upd()})();
 // Share: copy this page's address.
 document.getElementById('share').addEventListener('click',function(){const out=document.getElementById('shared'),url=location.href.split('#')[0];
