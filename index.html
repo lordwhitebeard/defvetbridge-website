@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DefVetBridge</title>
+<meta name="description" content="DefVetBridge (DVB) helps Australian veterans organise their medical and service records into evidence for a DVA claim. Built by a veteran. Support it with a donation.">
+<meta property="og:title" content="DefVetBridge: your records, organised for your DVA claim">
+<meta property="og:description" content="DVB reads a veteran's records, matches them to DVA Statements of Principles and builds a claim pack with every page cited. Help get it finished.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+/* Layout: a light page in the wordmark's own colours. Sticky header with section links; hero (message + sample record);
+   then full-width bands in the order of a one-page site: why, what it does, how, the work (a claim pack), support, FAQ, final step. */
+:root{
+  --paper:#f4f6f5;      /* page ground, slight green bias */
+  --sheet:#ffffff;      /* cards and the sample record */
+  --ink:#102f4c;        /* wordmark navy: headings and body text */
+  --ink-soft:#4a5d70;   /* secondary text */
+  --green:#1d432e;      /* wordmark green */
+  --gold:#b88f40;       /* wordmark gold: donate, the one warm accent */
+  --gold-soft:#f3e6c6;  /* highlighter on the sample record */
+  --rule:#d9e0e4;       /* hairlines */
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --typed:"Courier New",Courier,"Liberation Mono",monospace;  /* typed service-record entries */
+  --wrap:68rem;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);padding-inline:max(16px,4vw)}
+img{max-width:100%;height:auto}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+h1,h2,h3{line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+section[id],main[id]{scroll-margin-top:calc(var(--hh,5rem) + 1rem)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.8em 1.4em;border-radius:6px;font:700 1rem/1 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-donate{background:var(--gold);color:#1c1405;border-color:var(--gold)}
+.btn-donate:hover{background:#a67f35;border-color:#a67f35}
+.btn-quiet{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-quiet:hover{background:var(--ink);color:var(--sheet)}
+
+/* header */
+header.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding-block:.9rem;background:var(--paper);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+header.top.stuck{border-bottom-color:var(--rule);box-shadow:0 10px 24px -20px rgba(16,47,76,.5)}
+header.top .brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ink)}
+header.top .brand img{height:52px;width:auto}
+header.top .brand span{font-weight:800;font-size:1.15rem;letter-spacing:.01em}
+header.top .btn{padding:.65em 1.1em;font-size:.95rem}
+nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
+nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .65em;border-radius:5px;white-space:nowrap}
+nav.sections a:hover{background:rgba(16,47,76,.07)}
+nav.sections a.on{color:var(--green);box-shadow:inset 0 -2px 0 var(--green);border-radius:5px 5px 0 0}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem)}
+.hero>*{min-width:0}
+.hero .lede{display:grid;gap:1.4rem}
+.hero .lede p{font-size:1.2rem;color:var(--ink-soft)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.4rem}
+.hero .small{font-size:.9rem;color:var(--ink-soft)}
+
+/* sample record page */
+.record{position:relative;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;box-shadow:0 1px 0 var(--rule),0 18px 40px -22px rgba(16,47,76,.35);padding:1.6rem 1.6rem 1.3rem;transform:rotate(-.6deg);margin:0}
+.record .head{display:flex;justify-content:space-between;gap:1rem;font:700 .72rem/1.3 var(--typed);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:.7rem;margin-bottom:.8rem}
+.record ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
+.record li{display:grid;grid-template-columns:5.6em 1fr;gap:.8em;font:400 .9rem/1.5 var(--typed);color:#2b3a48;padding:.3rem .45rem;border-radius:2px}
+.record li b{font-weight:700;color:var(--ink)}
+.record li.hit{background:var(--gold-soft);box-shadow:inset 3px 0 0 var(--gold)}
+.record .cite{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .8rem;font-size:.85rem;color:var(--ink-soft)}
+.tag{font:700 .78rem/1 var(--sans);background:var(--green);color:#fff;padding:.38em .6em;border-radius:3px;letter-spacing:.04em}
+.record .stamp{position:absolute;top:-.8rem;right:1rem;font:700 .7rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;padding:.45em .7em;border-radius:3px}
+.factors{margin-top:1rem;border-top:1px dashed var(--rule);padding-top:.9rem;display:grid;gap:.45rem;font-size:.88rem}
+.factors div{display:flex;justify-content:space-between;gap:1rem}
+.factors .ok{color:var(--green);font-weight:700}
+.factors .gap{color:#9a5b16;font-weight:700}
+
+/* bands */
+section.band{padding-block:clamp(3rem,6vw,5rem);border-top:1px solid var(--rule)}
+section.band>.wrap{display:grid;gap:2rem}
+.intro{display:grid;gap:.9rem}
+.intro p{color:var(--ink-soft);font-size:1.1rem}
+
+/* why */
+.why{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:start}
+.why>*{min-width:0}
+.why .story{display:grid;gap:1rem}
+.why .story p{color:var(--ink-soft);font-size:1.1rem}
+.why .card{display:grid;gap:.7rem;padding:1.4rem 1.5rem;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.why .card p{color:var(--ink-soft)}
+.problem{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.problem>div{display:grid;gap:.5rem;align-content:start;min-width:0}
+.problem .fig{font-size:2.4rem;font-weight:800;color:var(--green);line-height:1;font-variant-numeric:tabular-nums}
+.problem p{color:var(--ink-soft)}
+
+/* what it does */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.caps>div{min-width:0;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1.3rem 1.3rem 1.4rem;display:grid;gap:.45rem;align-content:start}
+.caps p{color:var(--ink-soft);font-size:1rem}
+.caps .k{font:700 .72rem/1 var(--typed);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+
+/* how */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:.5rem;align-content:start;min-width:0;padding-top:1rem;border-top:3px solid var(--ink)}
+.steps li::before{content:"Step " counter(s);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.steps p{color:var(--ink-soft);font-size:1rem}
+
+/* the work: inside a claim pack */
+.pack{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.5rem;align-items:center}
+.pack>*{min-width:0}
+.pack .copy{display:grid;gap:1rem}
+.pack .copy p{color:var(--ink-soft)}
+.pack .copy p.fact{font-size:.95rem;color:var(--ink);background:var(--sheet);border-left:3px solid var(--gold);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+.sheets{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.sheets li{display:grid;grid-template-columns:4.2rem 1fr;gap:1rem;align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;box-shadow:0 8px 18px -16px rgba(16,47,76,.45)}
+.sheets li:nth-child(2){margin-left:1.2rem}.sheets li:nth-child(3){margin-left:2.4rem}.sheets li:nth-child(4){margin-left:3.6rem}.sheets li:nth-child(5){margin-left:4.8rem}
+.sheets .pg{font:700 .78rem/1.2 var(--typed);color:var(--ink-soft);text-align:center;border-right:1px solid var(--rule);padding-right:.8rem}
+.sheets b{display:block}
+.sheets span.d{color:var(--ink-soft);font-size:.92rem}
+.sheets .hl{background:linear-gradient(transparent 55%,var(--gold-soft) 55%)}
+
+/* support / investment */
+.donate{background:var(--ink);color:#fff;border-radius:10px;padding:clamp(2rem,5vw,3.5rem);display:grid;gap:2rem}
+.donate>*{min-width:0}
+.donate h2,.donate h3{color:#fff}
+.donate p{color:#c9d5e1}
+.donate .head{display:grid;gap:.9rem}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.tiers>div{min-width:0;display:grid;gap:.7rem;align-content:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:1.4rem}
+.tiers .amt{font-size:2.2rem;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.tiers .btn{margin-top:.3rem;justify-self:start}
+.donate .split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1.8rem}
+.donate .split>*{min-width:0;display:grid;gap:.8rem;align-content:start}
+.donate ul.goes{margin:0;padding-left:1.1rem;color:#c9d5e1;display:grid;gap:.35rem}
+.progress{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:#c9d5e1}
+.progress li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start}
+.progress b{color:#fff}
+.progress .mk{width:1.15rem;height:1.15rem;margin-top:.25rem;border-radius:50%;border:2px solid var(--gold)}
+.progress .done .mk{background:var(--gold)}
+.progress .now .mk{background:linear-gradient(90deg,var(--gold) 50%,transparent 50%)}
+.progress .now b::after{content:" (now)";color:var(--gold)}
+.donate p.note{font-size:.85rem;color:#9fb3c6}
+
+/* FAQ */
+.faq{display:grid;gap:.6rem;max-width:52rem}
+.faq details{background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.faq summary{cursor:pointer;list-style:none;padding:1rem 3rem 1rem 1.2rem;font-weight:700;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);font-size:1.4rem;font-weight:400;color:var(--green)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 1.2rem 1.1rem;color:var(--ink-soft)}
+
+/* final step */
+.final{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:clamp(1.8rem,4vw,2.8rem)}
+.final>*{min-width:0}
+.final .copy{display:grid;gap:.8rem}
+.final .copy p{color:var(--ink-soft)}
+.final .acts{display:grid;gap:.7rem;justify-items:stretch}
+.final .share{font-size:.85rem;color:var(--ink-soft);text-align:center;min-height:1.3em;overflow-wrap:anywhere}
+
+footer{padding-block:3rem 2.5rem;border-top:1px solid var(--rule);margin-top:clamp(3rem,6vw,5rem);display:grid;gap:1rem;font-size:.9rem;color:var(--ink-soft)}
+footer .help{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1.1rem;color:var(--ink)}
+footer .help b{color:var(--ink)}
+footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem}
+footer .bottom nav{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem}
+footer .bottom a{color:var(--ink-soft)}
+
+@media (max-width:1060px){
+  header.top{flex-wrap:wrap}
+  nav.sections{order:3;width:100%;margin:0;flex-wrap:wrap;justify-content:flex-start;gap:.1rem .2rem}
+}
+@media (max-width:900px){
+  .hero,.why,.pack,.donate .split,.final{grid-template-columns:1fr}
+  .steps,.caps,.tiers{grid-template-columns:repeat(2,1fr)}
+  .record{transform:none}
+  .sheets li:nth-child(n){margin-left:0}
+}
+@media (max-width:640px){
+  nav.sections a{font-size:.9rem;padding:.45em .55em}
+  .problem,.steps,.caps,.tiers{grid-template-columns:1fr}
+  header.top .brand span{display:none}
+  header.top .brand img{height:44px}
+  .record li{grid-template-columns:1fr;gap:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="#top" aria-label="DefVetBridge home"><img src="DVB_wordmark.png" alt="DVB" width="113" height="52"><span>DefVetBridge</span></a>
+  <nav class="sections" aria-label="Sections">
+    <a href="#why">Why DVB</a>
+    <a href="#what">What it does</a>
+    <a href="#how">How it works</a>
+    <a href="#pack">The claim pack</a>
+    <a href="#support">Support DVB</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="lede">
+    <span class="eyebrow">For Australian veterans and their advocates</span>
+    <h1>Your records already hold the evidence. DVB helps you find it.</h1>
+    <p>DefVetBridge reads a veteran's medical and service records, matches what it finds to the DVA's Statements of Principles, and shows which factors have evidence on file and which are still missing. Then it builds a claim pack with every page cited back to the original document.</p>
+    <div class="actions">
+      <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Help get it finished</a>
+      <a class="btn btn-quiet" href="#how">How it works</a>
+    </div>
+    <p class="small">Built by a veteran going through the DVA claims process himself.</p>
+  </div>
+
+  <figure class="record" aria-label="Example of a service medical record with one entry highlighted as evidence">
+    <span class="stamp">Example</span>
+    <div class="head"><span>Unit Medical Centre</span><span>Clinical notes</span></div>
+    <ol>
+      <li><span>03 MAR 89</span><span>Twisted R ankle on PT run. Swelling. Strapped, light duties 7/7.</span></li>
+      <li><span>21 JUN 90</span><span>Annual medical. Fit for all duties.</span></li>
+      <li class="hit"><span><b>14 FEB 91</b></span><span><b>R ankle giving way since Mar 89 injury. Refer physio.</b></span></li>
+      <li><span>02 APR 91</span><span>Physio: lateral ligament laxity R ankle.</span></li>
+    </ol>
+    <div class="cite"><span class="tag">E2</span><span>Cited in the claim pack, page 3 of the original record</span></div>
+    <div class="factors">
+      <div><span>Injury to the ankle before onset</span><span class="ok">Evidence on file</span></div>
+      <div><span>Current diagnosis from a doctor</span><span class="gap">Gap: needed</span></div>
+    </div>
+  </figure>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <div class="why">
+      <div class="story">
+        <span class="eyebrow">Why DVB exists</span>
+        <h2>The evidence exists. It is buried.</h2>
+        <p>A DVA claim succeeds or stalls on evidence: proof that something happened during service and that it is linked to the condition you have now. That proof is usually in your own records, spread across hundreds of pages written decades ago.</p>
+        <p>Graham Kissell, a former ADF member in Brisbane, hit this wall with his own claim. The evidence was in his files, but finding the right lines by hand meant days of reading. So he built DefVetBridge to do the finding, and to set out the result so an advocate and the DVA can check it.</p>
+      </div>
+      <div class="card">
+        <h3>Built from real use</h3>
+        <p>DVB was built on real records, starting with Graham's own. It is now in use with a second veteran, and their first claim packs are being reviewed line by line.</p>
+        <p>It is self-funded, with no company or government money behind it.</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div><span class="fig">370+</span><h3>Statements of Principles</h3><p>Each condition has its own list of factors the DVA looks for. Picking the wrong one means checking the wrong evidence.</p></div>
+      <div><span class="fig">100s</span><h3>of pages per veteran</h3><p>Medical files, service records, specialist letters and scans. Much of it handwritten, abbreviated and out of order.</p></div>
+      <div><span class="fig">1</span><h3>line can matter</h3><p>A single entry from 1991 can be the link a claim needs. Finding it by hand takes days, if it is found at all.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="what">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">What it does</span>
+      <h2>Everything between your records and a claim</h2>
+    </div>
+    <div class="caps">
+      <div><span class="k">Read</span><h3>Reads typed and handwritten records</h3><p>Scanned medical notes, service records and specialist letters, including handwriting that ordinary text search misses.</p></div>
+      <div><span class="k">Find</span><h3>Finds conditions, dates and injuries</h3><p>Pulls out each condition, when it was first recorded, which side of the body, and who treated it.</p></div>
+      <div><span class="k">Group</span><h3>Groups records into injuries</h3><p>Fifteen notes about one shoulder become one shoulder injury, so nothing is counted twice or missed.</p></div>
+      <div><span class="k">Match</span><h3>Matches to the right SOP</h3><p>Each condition is matched to its Statement of Principles, so the evidence is checked against the factors that actually apply.</p></div>
+      <div><span class="k">Check</span><h3>Shows evidence and gaps</h3><p>For every factor: the pages that support it, or a clear note that nothing on file does yet.</p></div>
+      <div><span class="k">Build</span><h3>Builds the claim pack</h3><p>Pre-filled DVA forms and the cited pages in one PDF, ready for you and your advocate to check.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">How it works</span>
+      <h2>From a box of records to a claim pack</h2>
+      <p>You stay in charge at every step. DVB does the reading and sorting; you and your advocate make the decisions.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Upload your records</h3><p>PDFs, scans and photos of your medical and service records, as they are.</p></li>
+      <li><h3>DVB reads every page</h3><p>Typed and handwritten notes are read and indexed, with conditions, dates, injuries and treating doctors pulled out.</p></li>
+      <li><h3>You check the matches</h3><p>See each condition's Statement of Principles, which factors have evidence, and which are gaps. Accept or reject what DVB found.</p></li>
+      <li><h3>Build and lodge</h3><p>Build the claim pack, review it with your advocate, then lodge it with the DVA yourselves.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="pack">
+  <div class="wrap pack">
+    <div class="copy">
+      <span class="eyebrow">The work</span>
+      <h2>Inside a claim pack</h2>
+      <p>A claim pack is one PDF that puts the forms and the proof side by side. Every quote in it links to the exact page it came from, so an advocate or a DVA delegate can check it in seconds.</p>
+      <p class="fact">A real pack built for one knee claim ran to 188 pages, with every cited line highlighted and linked back to its source document.</p>
+    </div>
+    <ol class="sheets" aria-label="The parts of a claim pack, in order">
+      <li><span class="pg">Cover</span><span><b>Contents</b><span class="d">Each claim, what it covers, and how strong its evidence is.</span></span></li>
+      <li><span class="pg">Forms</span><span><b>DVA forms, pre-filled</b><span class="d">Your details, service and injury dates, ready to check and sign.</span></span></li>
+      <li><span class="pg">Index</span><span><b>Evidence index</b><span class="d">Each Statement of Principles factor and the quote that supports it.</span></span></li>
+      <li><span class="pg">E1–E12</span><span><b>Cited pages</b><span class="d">The original pages, with the <span class="hl">relevant lines highlighted</span>.</span></span></li>
+      <li><span class="pg">A1–A9</span><span><b>Appendix</b><span class="d">Each source document in full, so nothing is taken out of context.</span></span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="support">
+  <div class="wrap">
+    <div class="donate">
+      <div class="head">
+        <span class="eyebrow" style="color:var(--gold)">Support DVB</span>
+        <h2>What your donation pays for</h2>
+        <p>Reading and organising one veteran's records costs roughly A$15 to A$100 in AI processing, depending on how many records they have. Every donation goes into getting more veterans' records read.</p>
+      </div>
+      <div class="tiers">
+        <div><span class="amt">A$20</span><h3>A small record set</h3><p>Reads and indexes a veteran's records when there are only a few files.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
+        <div><span class="amt">A$50</span><h3>A typical veteran</h3><p>Covers the reading for most veterans' medical and service records.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
+        <div><span class="amt">A$100</span><h3>A large record set</h3><p>Hundreds of pages, including handwritten notes read page by page.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Where the money goes</h3>
+          <ul class="goes">
+            <li>AI processing so more veterans' records can be read</li>
+            <li>The server and storage that keep records private and secure</li>
+            <li>The time to finish DVB and open it to more veterans and advocates</li>
+          </ul>
+          <p class="note">You choose the amount on PayPal; any amount helps. DefVetBridge is a personal project, not a registered charity, so donations are not tax-deductible.</p>
+        </div>
+        <div>
+          <h3>Where it is up to</h3>
+          <ul class="progress">
+            <li class="done"><span class="mk"></span><span><b>Reading and indexing records</b>, including handwritten notes</span></li>
+            <li class="done"><span class="mk"></span><span><b>Matching conditions to SOP factors</b>, with evidence and gaps shown</span></li>
+            <li class="done"><span class="mk"></span><span><b>Claim packs</b> with pre-filled forms and highlighted, cited pages</span></li>
+            <li class="now"><span class="mk"></span><span><b>Reviewing the first real claim packs</b></span></li>
+            <li><span class="mk"></span><span><b>Opening it up to more veterans and advocates</b></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">Questions</span>
+      <h2>What DVB is, and what it is not</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Does DVB lodge my claim for me?</summary><p>No. DVB builds the claim pack. You, or your advocate, check it and lodge it with the DVA yourselves. Nothing is ever sent to the DVA automatically.</p></details>
+      <details><summary>Will it tell me whether my claim will succeed?</summary><p>No. DVB shows what your records support and where the gaps are. It never gives odds of success, because only the DVA decides a claim.</p></details>
+      <details><summary>Is it legal or medical advice?</summary><p>No. DVB organises evidence. It works alongside your advocate and your doctor, not instead of them. It never fills in the parts of a form that only a doctor can complete.</p></details>
+      <details><summary>Who can see my records?</summary><p>Only you, and an advocate you choose to give access to. Each veteran's records are kept separate at the database level, and nothing is deleted without a record of what was removed.</p></details>
+      <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. Donations help open it to more veterans and advocates sooner.</p></details>
+      <details><summary>Is DefVetBridge part of the DVA or Defence?</summary><p>No. It is an independent project built by a veteran. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="help">
+  <div class="wrap">
+    <div class="final">
+      <div class="copy">
+        <span class="eyebrow">Next step</span>
+        <h2>Help get DVB finished</h2>
+        <p>A donation of any size goes into reading more veterans' records. If you know a veteran or an advocate who should hear about DVB, share this page with them.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate with PayPal</a>
+        <button class="btn btn-quiet" id="share" type="button">Copy link to share</button>
+        <span class="share" id="shared" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p class="help"><b>Need support now?</b> Open Arms, Veterans &amp; Families Counselling, is free and available 24 hours a day on 1800 011 046.</p>
+  <p>DefVetBridge is an independent project. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence. It organises evidence and does not provide legal, medical or financial advice.</p>
+  <div class="bottom">
+    <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans</span>
+    <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
+  </div>
+</footer>
+</div>
+<script>
+// Header: hairline once scrolled; highlight the link for the section in view; sections stop below the header.
+(function(){const h=document.querySelector('header.top'),links=[...document.querySelectorAll('nav.sections a')];
+ const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ function hh(){document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')}
+ function upd(){h.classList.toggle('stuck',scrollY>4);let cur=null;const y=scrollY+innerHeight*0.35;
+  for(const s of secs){if(s.offsetTop<=y)cur=s.id}
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
+ addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{hh();upd()});hh();upd()})();
+// Share: copy this page's address.
+document.getElementById('share').addEventListener('click',function(){const out=document.getElementById('shared'),url=location.href.split('#')[0];
+ const done=()=>{out.textContent='Link copied: '+url};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,()=>{out.textContent=url})}else{out.textContent=url}});
+</script>
+</body>
+</html>
