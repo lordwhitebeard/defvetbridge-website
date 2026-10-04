@@ -18,6 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("dvb-theme");if(t&&t!=="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 /* Layout: a light page in the wordmark's own colours. Sticky header with section links; hero (message + sample record);
    then full-width bands in the order of a one-page site: why, what it does, how, the work (a claim pack), support, FAQ, final step. */
@@ -30,11 +31,24 @@
   --gold:#b88f40;       /* wordmark gold: donate, the one warm accent */
   --gold-soft:#f3e6c6;  /* highlighter on the sample record */
   --rule:#d9e0e4;       /* hairlines */
+  --on-accent:#ffffff;  /* text on green buttons and badges */
+  --field:#b9c4cb;      /* form field borders */
+  --err:#9a2b1d;
+  --band:#102f4c;       /* the dark Support panel */
+  --band-ink:#ffffff;
+  --band-soft:#c9d5e1;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --typed:"Courier New",Courier,"Liberation Mono",monospace;  /* typed service-record entries */
   --wrap:68rem;
   color-scheme:light;
 }
+/* Themes: the same seven as the DVB app (colours from app/static/style.css). Only colour tokens change. */
+:root[data-theme="defvetbridge"]{--paper:#0B1426;--sheet:#142236;--ink:#E2E8F0;--ink-soft:#94A3B8;--green:#14B8A6;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#223349;--on-accent:#0B1426;--field:#2E4560;--err:#f87171;--band:#0F2A3A;--band-ink:#E2E8F0;--band-soft:#A9B8CB;color-scheme:dark}
+:root[data-theme="dark"]{--paper:#13171F;--sheet:#181C25;--ink:#DFE3EB;--ink-soft:#9CA3AF;--green:#60A5FA;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#2A3140;--on-accent:#0B1220;--field:#3A4352;--err:#f87171;--band:#1E2633;--band-ink:#DFE3EB;--band-soft:#A7AFBC;color-scheme:dark}
+:root[data-theme="army"]{--paper:#1F2318;--sheet:#2B3020;--ink:#E8E4D8;--ink-soft:#A8A392;--green:#C9A227;--gold:#C9A227;--gold-soft:rgba(201,162,39,.2);--rule:#3D4530;--on-accent:#1F2318;--field:#4A5339;--err:#E06A5A;--band:#2B3020;--band-ink:#E8E4D8;--band-soft:#BDB8A6;color-scheme:dark}
+:root[data-theme="navy"]{--paper:#051233;--sheet:#0C1F4D;--ink:#E6ECF5;--ink-soft:#9AAAC4;--green:#D4AF37;--gold:#D4AF37;--gold-soft:rgba(212,175,55,.2);--rule:#1B2E5C;--on-accent:#051233;--field:#2A4170;--err:#f87171;--band:#0C1F4D;--band-ink:#E6ECF5;--band-soft:#AFBDD4;color-scheme:dark}
+:root[data-theme="airforce"]{--paper:#071A2E;--sheet:#0F2A47;--ink:#E4F1FB;--ink-soft:#8FB4D6;--green:#4FA8DA;--gold:#D4A94A;--gold-soft:rgba(79,168,218,.2);--rule:#1C3A5E;--on-accent:#071A2E;--field:#2A4C73;--err:#f87171;--band:#0F2A47;--band-ink:#E4F1FB;--band-soft:#A9C6E0;color-scheme:dark}
+:root[data-theme="colourblind"]{--paper:#FAFAFA;--sheet:#FFFFFF;--ink:#1A1A1A;--ink-soft:#595959;--green:#0072B2;--gold:#E69F00;--gold-soft:#FBE3B3;--rule:#C9C9C9;--on-accent:#FFFFFF;--field:#8C8C8C;--err:#D55E00;--band:#1A1A1A;--band-ink:#FFFFFF;--band-soft:#D9D9D9;color-scheme:light}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);padding-inline:max(16px,4vw)}
@@ -53,7 +67,7 @@ section[id],main[id]{scroll-margin-top:calc(var(--hh,5rem) + 1rem)}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.8em 1.4em;border-radius:6px;font:700 1rem/1 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer}
 .btn-donate{background:var(--gold);color:#1c1405;border-color:var(--gold)}
-.btn-donate:hover{background:#a67f35;border-color:#a67f35}
+.btn-donate:hover{filter:brightness(.9)}
 .btn-quiet{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn-quiet:hover{background:var(--ink);color:var(--sheet)}
 
@@ -62,11 +76,12 @@ header.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;just
 header.top.stuck{border-bottom-color:var(--rule);box-shadow:0 10px 24px -20px rgba(16,47,76,.5)}
 header.top .brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ink);flex-shrink:0}
 header.top .brand img{height:52px;width:auto}
+:root[data-theme=defvetbridge] header.top .brand img,:root[data-theme=dark] header.top .brand img,:root[data-theme=army] header.top .brand img,:root[data-theme=navy] header.top .brand img,:root[data-theme=airforce] header.top .brand img{background:#f4f6f5;border-radius:8px;padding:4px 8px;box-sizing:content-box}
 header.top .brand span{font-weight:800;font-size:1.15rem;letter-spacing:.01em;display:none}  /* the logo carries the name while the menu shares the row */
 header.top .btn{padding:.65em 1.1em;font-size:.95rem}
 nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
 nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .65em;border-radius:5px;white-space:nowrap}
-nav.sections a:hover{background:rgba(16,47,76,.07)}
+nav.sections a:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 nav.sections a.on{color:var(--green);box-shadow:inset 0 -2px 0 var(--green);border-radius:5px 5px 0 0}
 
 /* hero */
@@ -78,14 +93,14 @@ nav.sections a.on{color:var(--green);box-shadow:inset 0 -2px 0 var(--green);bord
 .hero .small{font-size:.9rem;color:var(--ink-soft)}
 
 /* sample record page */
-.record{position:relative;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;box-shadow:0 1px 0 var(--rule),0 18px 40px -22px rgba(16,47,76,.35);padding:1.6rem 1.6rem 1.3rem;transform:rotate(-.6deg);margin:0}
+.record{--sheet:#fff;--ink:#102f4c;--ink-soft:#4a5d70;--rule:#d9e0e4;--green:#1d432e;--gold:#b88f40;--gold-soft:#f3e6c6;--on-accent:#fff;position:relative;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;box-shadow:0 1px 0 var(--rule),0 18px 40px -22px rgba(16,47,76,.35);padding:1.6rem 1.6rem 1.3rem;transform:rotate(-.6deg);margin:0}
 .record .head{display:flex;justify-content:space-between;gap:1rem;font:700 .72rem/1.3 var(--typed);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:.7rem;margin-bottom:.8rem}
 .record ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
 .record li{display:grid;grid-template-columns:5.6em 1fr;gap:.8em;font:400 .9rem/1.5 var(--typed);color:#2b3a48;padding:.3rem .45rem;border-radius:2px}
 .record li b{font-weight:700;color:var(--ink)}
 .record li.hit{background:var(--gold-soft);box-shadow:inset 3px 0 0 var(--gold)}
 .record .cite{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .8rem;font-size:.85rem;color:var(--ink-soft)}
-.tag{font:700 .78rem/1 var(--sans);background:var(--green);color:#fff;padding:.38em .6em;border-radius:3px;letter-spacing:.04em}
+.tag{font:700 .78rem/1 var(--sans);background:var(--green);color:var(--on-accent);padding:.38em .6em;border-radius:3px;letter-spacing:.04em}
 .record .stamp{position:absolute;top:-.8rem;right:1rem;font:700 .7rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;padding:.45em .7em;border-radius:3px}
 .factors{margin-top:1rem;border-top:1px dashed var(--rule);padding-top:.9rem;display:grid;gap:.45rem;font-size:.88rem}
 .factors div{display:flex;justify-content:space-between;gap:1rem}
@@ -134,11 +149,11 @@ section.band>.wrap{display:grid;gap:2rem}
 .guide .copy>p{color:var(--ink-soft)}
 .guide ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
 .guide li{display:grid;grid-template-columns:2rem 1fr;gap:.7rem;align-items:start}
-.guide li .n{width:2rem;height:2rem;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.95rem}
+.guide li .n{width:2rem;height:2rem;border-radius:50%;background:var(--green);color:var(--on-accent);font-weight:800;display:grid;place-items:center;font-size:.95rem}
 .guide li span{color:var(--ink-soft)}.guide li b{color:var(--ink)}
 .guide .dl{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:.3rem}
 .guide .meta{font-size:.88rem;color:var(--ink-soft)}
-.btn-green{background:var(--green);color:#fff;border-color:var(--green)}.btn-green:hover{background:#163523;border-color:#163523}
+.btn-green{background:var(--green);color:var(--on-accent);border-color:var(--green)}.btn-green:hover{filter:brightness(.9)}
 .hero .guide-link{font-size:.95rem;color:var(--ink-soft)}.hero .guide-link a{font-weight:700}
 
 /* register interest */
@@ -151,7 +166,7 @@ form.eoi{background:var(--sheet);border:1px solid var(--rule);border-radius:10px
 form.eoi .full{grid-column:1/-1}
 form.eoi label{display:grid;gap:.35rem;font-weight:600;font-size:.95rem;min-width:0}
 form.eoi label small{font-weight:400;color:var(--ink-soft)}
-form.eoi input[type=text],form.eoi input[type=email],form.eoi select,form.eoi textarea{width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:var(--paper);border:1px solid #b9c4cb;border-radius:6px;padding:.65em .75em}
+form.eoi input[type=text],form.eoi input[type=email],form.eoi select,form.eoi textarea{width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--field);border-radius:6px;padding:.65em .75em}
 form.eoi textarea{min-height:6.5rem;resize:vertical}
 form.eoi input:focus,form.eoi select:focus,form.eoi textarea:focus{outline:3px solid var(--gold);outline-offset:1px;border-color:var(--ink)}
 form.eoi .tick{grid-template-columns:auto 1fr;align-items:start;gap:.7rem;font-weight:400;color:var(--ink-soft)}
@@ -160,7 +175,7 @@ form.eoi .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden
 form.eoi .send{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem}
 form.eoi .status{font-size:.95rem;min-height:1.4em}
 form.eoi .status.ok{color:var(--green);font-weight:700}
-form.eoi .status.err{color:#9a2b1d;font-weight:600}
+form.eoi .status.err{color:var(--err);font-weight:600}
 form.eoi .privacy{font-size:.85rem;color:var(--ink-soft)}
 form.eoi.done .field{display:none}
 
@@ -179,27 +194,27 @@ form.eoi.done .field{display:none}
 .sheets .hl{background:linear-gradient(transparent 55%,var(--gold-soft) 55%)}
 
 /* support / investment */
-.donate{background:var(--ink);color:#fff;border-radius:10px;padding:clamp(2rem,5vw,3.5rem);display:grid;gap:2rem}
+.donate{background:var(--band);color:var(--band-ink);border:1px solid var(--rule);border-radius:10px;padding:clamp(2rem,5vw,3.5rem);display:grid;gap:2rem}
 .donate>*{min-width:0}
-.donate h2,.donate h3{color:#fff}
-.donate p{color:#c9d5e1}
+.donate h2,.donate h3{color:var(--band-ink)}
+.donate p{color:var(--band-soft)}
 .donate .head{display:grid;gap:.9rem}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.tiers>div{min-width:0;display:grid;gap:.7rem;align-content:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:1.4rem}
-.tiers .amt{font-size:2.2rem;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.tiers>div{min-width:0;display:grid;gap:.7rem;align-content:start;background:color-mix(in srgb,var(--band-ink) 6%,transparent);border:1px solid color-mix(in srgb,var(--band-ink) 16%,transparent);border-radius:8px;padding:1.4rem}
+.tiers .amt{font-size:2.2rem;font-weight:800;color:var(--band-ink);line-height:1;font-variant-numeric:tabular-nums}
 .tiers .btn{margin-top:.3rem;justify-self:start}
-.donate .split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1.8rem}
+.donate .split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;border-top:1px solid color-mix(in srgb,var(--band-ink) 16%,transparent);padding-top:1.8rem}
 .donate .split>*{min-width:0;display:grid;gap:.8rem;align-content:start}
-.donate ul.goes{margin:0;padding-left:1.1rem;color:#c9d5e1;display:grid;gap:.35rem}
-.progress{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:#c9d5e1}
+.donate ul.goes{margin:0;padding-left:1.1rem;color:var(--band-soft);display:grid;gap:.35rem}
+.progress{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--band-soft)}
 .progress li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start}
-.progress b{color:#fff}
+.progress b{color:var(--band-ink)}
 .progress .mk{width:1.15rem;height:1.15rem;margin-top:.25rem;border-radius:50%;border:2px solid var(--gold)}
 .progress .done .mk{background:var(--gold)}
 .progress .now .mk{background:linear-gradient(90deg,var(--gold) 50%,transparent 50%)}
 .progress .now b::after{content:" (now)";color:var(--gold)}
-.donate p.note{font-size:.85rem;color:#9fb3c6}
-.donate p.first{color:#fff;background:rgba(184,143,64,.16);border-left:3px solid var(--gold);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+.donate p.note{font-size:.85rem;color:var(--band-soft);opacity:.85}
+.donate p.first{color:var(--band-ink);background:rgba(184,143,64,.16);border-left:3px solid var(--gold);padding:.8rem 1rem;border-radius:0 6px 6px 0}
 .donate p.first a{color:var(--gold);font-weight:700}
 
 /* FAQ */
@@ -227,6 +242,9 @@ footer .help b{color:var(--ink)}
 footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem}
 footer .bottom nav{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem}
 footer .bottom a{color:var(--ink-soft)}
+footer .theme{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .8rem}
+footer .theme label{font-weight:600;color:var(--ink)}
+footer .theme select{font:400 .95rem/1.3 var(--sans);color:var(--ink);background:var(--sheet);border:1px solid var(--field);border-radius:6px;padding:.4em .6em}
 
 @media (max-width:1200px){
   header.top{flex-wrap:wrap}
@@ -514,6 +532,10 @@ footer .bottom a{color:var(--ink-soft)}
 <footer>
   <p class="help"><b>Need support now?</b> Open Arms, Veterans &amp; Families Counselling, is free and available 24 hours a day on 1800 011 046.</p>
   <p>DefVetBridge is an independent project. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence. It organises evidence and does not provide legal, medical or financial advice.</p>
+  <div class="theme"><label for="theme-pick">Theme</label>
+    <select id="theme-pick" aria-label="Choose a colour theme">
+      <option value="light">Light</option><option value="defvetbridge">DefVetBridge</option><option value="dark">Dark</option><option value="army">Army</option><option value="navy">Navy</option><option value="airforce">Air Force</option><option value="colourblind">Colourblind</option>
+    </select></div>
   <div class="bottom">
     <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans · <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a></span>
     <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#guide">Free guide</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
@@ -545,6 +567,10 @@ footer .bottom a{color:var(--ink-soft)}
    else{btn.disabled=false;say((j.error||'That did not send.')+' You can also email admin@defvetbridge.com.','err')}}
   catch(_){btn.disabled=false;say('That did not send. Please try again, or email admin@defvetbridge.com.','err')}});
 })();
+// Theme picker: same seven themes as the DVB app; remembered in this browser only.
+(function(){const sel=document.getElementById('theme-pick');if(!sel)return;
+ sel.value=document.documentElement.getAttribute('data-theme')||'light';
+ sel.addEventListener('change',()=>{const t=sel.value;if(t==='light')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('dvb-theme',t)}catch(e){}});})();
 // Share: copy this page's address.
 document.getElementById('share').addEventListener('click',function(){const out=document.getElementById('shared'),url=location.href.split('#')[0];
  const done=()=>{out.textContent='Link copied: '+url};
