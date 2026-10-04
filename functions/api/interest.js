@@ -4,7 +4,7 @@
 // View sign-ups: Cloudflare > Storage & Databases > D1 > dvb-interest > Console:
 //   SELECT * FROM interest ORDER BY created_at DESC;
 // Emails (optional, via Resend): set the secret RESEND_API_KEY on the Pages project. A NEW sign-up then gets one
-// confirmation email (free guide + donate link), and admin@ gets a note. Re-submissions update the row, no email.
+// confirmation email (free guide link), and admin@ gets a note. Re-submissions update the row, no email.
 // Without the key, sign-ups still save and no email is sent.
 
 const ROLES = ["Veteran", "Advocate", "Family member", "Organisation", "Other"];
@@ -78,7 +78,6 @@ export async function onRequestPost({ request, env, waitUntil }) {
 // ---------- emails (Resend) ----------
 const SITE = "https://www.defvetbridge.com";
 const GUIDE = SITE + "/DVB_Getting_Ready_For_Your_DVA_Claim.pdf";
-const DONATE = "https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N";
 const FROM = "Graham at DefVetBridge <admin@defvetbridge.com>";
 const ADMIN = "admin@defvetbridge.com";
 const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -102,10 +101,6 @@ function welcome(rec) {
     `While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive.`,
     `Free guide, "Getting ready for your DVA claim" (PDF): ${GUIDE}`,
     ``,
-    `DefVetBridge is self-funded. If you would like to help get it finished and into more veterans' hands, you can donate here: ${DONATE}`,
-    `Donors are offered the first places when DVB opens. If you donate, use this same email address on PayPal so I can match you up.`,
-    `(DefVetBridge is a personal project, not a registered charity, so donations are not tax-deductible.)`,
-    ``,
     `Graham Kissell`,
     `DefVetBridge | ${SITE}`,
     ``,
@@ -122,9 +117,6 @@ function welcome(rec) {
 <p style="margin:0 0 14px">Thanks for registering your interest in <b>DefVetBridge</b>. You are on the list, and I will email you when there is a place for you.</p>
 <p style="margin:0 0 18px">While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive, and this free two-page guide shows you how to ask for them.</p>
 <p style="margin:0 0 22px">${btn(GUIDE, "Get the free guide (PDF)", "#1d432e", "#ffffff")}</p>
-<p style="margin:0 0 14px">DefVetBridge is self-funded. If you would like to help get it finished and into more veterans' hands, a donation of any size goes into reading more veterans' records. <b>Donors are offered the first places when DVB opens</b>; if you donate, use this same email address on PayPal so I can match you up.</p>
-<p style="margin:0 0 8px">${btn(DONATE, "Donate with PayPal", "#b88f40", "#1c1405")}</p>
-<p style="margin:0 0 20px;font-size:13px;color:#4a5d70">DefVetBridge is a personal project, not a registered charity, so donations are not tax-deductible.</p>
 <p style="margin:0 0 4px">Graham Kissell</p>
 <p style="margin:0 0 24px"><a href="${SITE}" style="color:#1d432e">DefVetBridge</a></p>
 </td></tr>
