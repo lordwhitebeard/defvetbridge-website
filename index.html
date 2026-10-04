@@ -52,9 +52,9 @@ section[id],main[id]{scroll-margin-top:calc(var(--hh,5rem) + 1rem)}
 /* header */
 header.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding-block:.9rem;background:var(--paper);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
 header.top.stuck{border-bottom-color:var(--rule);box-shadow:0 10px 24px -20px rgba(16,47,76,.5)}
-header.top .brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ink)}
+header.top .brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ink);flex-shrink:0}
 header.top .brand img{height:52px;width:auto}
-header.top .brand span{font-weight:800;font-size:1.15rem;letter-spacing:.01em}
+header.top .brand span{font-weight:800;font-size:1.15rem;letter-spacing:.01em;display:none}  /* the logo carries the name while the menu shares the row */
 header.top .btn{padding:.65em 1.1em;font-size:.95rem}
 nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
 nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .65em;border-radius:5px;white-space:nowrap}
@@ -130,6 +130,29 @@ section.band>.wrap{display:grid;gap:2rem}
 .btn-green{background:var(--green);color:#fff;border-color:var(--green)}.btn-green:hover{background:#163523;border-color:#163523}
 .hero .guide-link{font-size:.95rem;color:var(--ink-soft)}.hero .guide-link a{font-weight:700}
 
+/* register interest */
+.interest{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.interest>*{min-width:0}
+.interest .copy{display:grid;gap:1rem}
+.interest .copy>p{color:var(--ink-soft)}
+.interest ul{margin:0;padding-left:1.1rem;color:var(--ink-soft);display:grid;gap:.35rem}
+form.eoi{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:clamp(1.4rem,3.5vw,2.2rem);display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem}
+form.eoi .full{grid-column:1/-1}
+form.eoi label{display:grid;gap:.35rem;font-weight:600;font-size:.95rem;min-width:0}
+form.eoi label small{font-weight:400;color:var(--ink-soft)}
+form.eoi input[type=text],form.eoi input[type=email],form.eoi select,form.eoi textarea{width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:var(--paper);border:1px solid #b9c4cb;border-radius:6px;padding:.65em .75em}
+form.eoi textarea{min-height:6.5rem;resize:vertical}
+form.eoi input:focus,form.eoi select:focus,form.eoi textarea:focus{outline:3px solid var(--gold);outline-offset:1px;border-color:var(--ink)}
+form.eoi .tick{grid-template-columns:auto 1fr;align-items:start;gap:.7rem;font-weight:400;color:var(--ink-soft)}
+form.eoi .tick input{width:1.15rem;height:1.15rem;margin-top:.2rem;accent-color:var(--green)}
+form.eoi .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+form.eoi .send{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem}
+form.eoi .status{font-size:.95rem;min-height:1.4em}
+form.eoi .status.ok{color:var(--green);font-weight:700}
+form.eoi .status.err{color:#9a2b1d;font-weight:600}
+form.eoi .privacy{font-size:.85rem;color:var(--ink-soft)}
+form.eoi.done .field{display:none}
+
 /* the work: inside a claim pack */
 .pack{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.5rem;align-items:center}
 .pack>*{min-width:0}
@@ -180,6 +203,8 @@ section.band>.wrap{display:grid;gap:2rem}
 .final>*{min-width:0}
 .final .copy{display:grid;gap:.8rem}
 .final .copy p{color:var(--ink-soft)}
+.final .copy p.contact{font-size:.95rem}
+.final .copy p.contact a,.faq a{font-weight:700}
 .final .acts{display:grid;gap:.7rem;justify-items:stretch}
 .final .share{font-size:.85rem;color:var(--ink-soft);text-align:center;min-height:1.3em;overflow-wrap:anywhere}
 
@@ -190,18 +215,20 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5r
 footer .bottom nav{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem}
 footer .bottom a{color:var(--ink-soft)}
 
-@media (max-width:1060px){
+@media (max-width:1200px){
   header.top{flex-wrap:wrap}
+  header.top .brand span{display:inline}
   nav.sections{order:3;width:100%;margin:0;flex-wrap:wrap;justify-content:flex-start;gap:.1rem .2rem}
 }
 @media (max-width:900px){
-  .hero,.why,.pack,.donate .split,.final,.guide{grid-template-columns:1fr}
+  .hero,.why,.pack,.donate .split,.final,.guide,.interest{grid-template-columns:1fr}
   .guide .thumb{justify-self:center}
   .steps,.caps,.tiers{grid-template-columns:repeat(2,1fr)}
   .record{transform:none}
   .sheets li:nth-child(n){margin-left:0}
 }
 @media (max-width:640px){
+  form.eoi{grid-template-columns:1fr}
   nav.sections a{font-size:.9rem;padding:.45em .55em}
   nav.sections{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:2rem}
   nav.sections::-webkit-scrollbar{display:none}
@@ -222,7 +249,8 @@ footer .bottom a{color:var(--ink-soft)}
     <a href="#what">What it does</a>
     <a href="#how">How it works</a>
     <a href="#guide">Free guide</a>
-    <a href="#pack">The claim pack</a>
+    <a href="#pack">Claim pack</a>
+    <a href="#interest">Register interest</a>
     <a href="#support">Support DVB</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -240,7 +268,7 @@ footer .bottom a{color:var(--ink-soft)}
       <a class="btn btn-quiet" href="#how">How it works</a>
     </div>
     <p class="small">Built by a veteran going through the DVA claims process himself.</p>
-    <p class="guide-link">Starting a claim? <a href="#guide">Get the free guide to gathering your records</a></p>
+    <p class="guide-link">Want to use DVB when it opens? <a href="#interest">Register your interest</a>. Starting a claim? <a href="#guide">Get the free guide</a>.</p>
   </div>
 
   <figure class="record" aria-label="Example of a service medical record with one entry highlighted as evidence">
@@ -353,6 +381,42 @@ footer .bottom a{color:var(--ink-soft)}
   </div>
 </section>
 
+<section class="band" id="interest">
+  <div class="wrap interest">
+    <div class="copy">
+      <span class="eyebrow">Register your interest</span>
+      <h2>Be first in line when DVB opens</h2>
+      <p>DVB is opening to more veterans and advocates in stages. Leave your details and we will let you know when there is a place for you.</p>
+      <ul>
+        <li>No cost and no obligation</li>
+        <li>Advocates and organisations are welcome too</li>
+        <li>Your answers help decide what DVB does next</li>
+      </ul>
+    </div>
+    <form class="eoi" id="eoi" novalidate>
+      <label class="field">Your name<input type="text" id="eoi-name" name="name" autocomplete="name" maxlength="100" required></label>
+      <label class="field">Email<input type="email" id="eoi-email" name="email" autocomplete="email" maxlength="200" required></label>
+      <label class="field">I am a
+        <select id="eoi-role" name="role" required>
+          <option value="">Choose one</option><option>Veteran</option><option>Advocate</option><option>Family member</option><option>Organisation</option><option>Other</option>
+        </select></label>
+      <label class="field">State <small>(optional)</small>
+        <select id="eoi-state" name="state">
+          <option value="">Choose one</option><option>ACT</option><option>NSW</option><option>NT</option><option>QLD</option><option>SA</option><option>TAS</option><option>VIC</option><option>WA</option><option>Outside Australia</option>
+        </select></label>
+      <label class="field full">Anything you would like us to know? <small>(optional, e.g. what you are claiming for, or how you would like to help)</small>
+        <textarea id="eoi-message" name="message" maxlength="1000"></textarea></label>
+      <label class="hp" aria-hidden="true">Leave this empty<input type="text" id="eoi-website" name="website" tabindex="-1" autocomplete="off"></label>
+      <label class="field full tick"><input type="checkbox" id="eoi-consent" name="consent" required><span>You can email me about DefVetBridge.</span></label>
+      <div class="full send">
+        <button class="btn btn-green field" type="submit" id="eoi-send">Register my interest</button>
+        <span class="status" id="eoi-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="full privacy field">Your details are used only to contact you about DefVetBridge. They are never shared or sold. To be removed at any time, email <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a>.</p>
+    </form>
+  </div>
+</section>
+
 <section class="band" id="support">
   <div class="wrap">
     <div class="donate">
@@ -403,7 +467,7 @@ footer .bottom a{color:var(--ink-soft)}
       <details><summary>Is it legal or medical advice?</summary><p>No. DVB organises evidence. It works alongside your advocate and your doctor, not instead of them. It never fills in the parts of a form that only a doctor can complete.</p></details>
       <details><summary>Who can see my records?</summary><p>Only you, and an advocate you choose to give access to. Each veteran's records are kept separate at the database level, and nothing is deleted without a record of what was removed.</p></details>
       <details><summary>Is there anything I can do now, before DVB is open?</summary><p>Yes. Start gathering your records. The <a href="#guide">free guide</a> shows how to request your Defence and DVA records and what other details to have ready. Records can take around 30 days to arrive, so it is worth starting early.</p></details>
-      <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. Donations help open it to more veterans and advocates sooner.</p></details>
+      <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. Donations help open it to more veterans and advocates sooner. To hear when it opens, <a href="#interest">register your interest</a>.</p></details>
       <details><summary>Is DefVetBridge part of the DVA or Defence?</summary><p>No. It is an independent project built by a veteran. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></details>
     </div>
   </div>
@@ -416,6 +480,7 @@ footer .bottom a{color:var(--ink-soft)}
         <span class="eyebrow">Next step</span>
         <h2>Help get DVB finished</h2>
         <p>A donation of any size goes into reading more veterans' records. If you know a veteran or an advocate who should hear about DVB, share this page with them.</p>
+        <p class="contact">Questions, or want to help in another way? Email <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a>.</p>
       </div>
       <div class="acts">
         <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate with PayPal</a>
@@ -431,7 +496,7 @@ footer .bottom a{color:var(--ink-soft)}
   <p class="help"><b>Need support now?</b> Open Arms, Veterans &amp; Families Counselling, is free and available 24 hours a day on 1800 011 046.</p>
   <p>DefVetBridge is an independent project. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence. It organises evidence and does not provide legal, medical or financial advice.</p>
   <div class="bottom">
-    <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans</span>
+    <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans · <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a></span>
     <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#guide">Free guide</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
   </div>
 </footer>
@@ -445,6 +510,22 @@ footer .bottom a{color:var(--ink-soft)}
   for(const s of secs){if(s.offsetTop<=y)cur=s.id}
   links.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;if(on&&!a.classList.contains('on')&&a.parentNode.scrollWidth>a.parentNode.clientWidth){a.parentNode.scrollTo({left:a.offsetLeft-16,behavior:'smooth'})}a.classList.toggle('on',on)})}
  addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{hh();upd()});hh();upd()})();
+// Register interest: send the form to /api/interest (Cloudflare Pages Function, saves to D1).
+(function(){const f=document.getElementById('eoi');if(!f)return;const t0=Date.now(),st=document.getElementById('eoi-status'),btn=document.getElementById('eoi-send');
+ const say=(m,c)=>{st.textContent=m;st.className='status'+(c?' '+c:'')};
+ f.addEventListener('submit',async e=>{e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  if(!v('eoi-name'))return say('Please enter your name.','err');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('eoi-email')))return say('Please enter a valid email address.','err');
+  if(!v('eoi-role'))return say('Please choose who you are.','err');
+  if(!document.getElementById('eoi-consent').checked)return say('Please tick the box so we can contact you.','err');
+  btn.disabled=true;say('Sending…');
+  try{const r=await fetch('/api/interest',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:v('eoi-name'),email:v('eoi-email'),role:v('eoi-role'),state:v('eoi-state'),message:v('eoi-message'),consent:document.getElementById('eoi-consent').checked,website:document.getElementById('eoi-website').value,elapsed_ms:Date.now()-t0})});
+   const j=await r.json().catch(()=>({}));
+   if(r.ok&&j.ok){f.classList.add('done');say('Thank you. You are on the list, and we will be in touch when DVB opens.','ok')}
+   else{btn.disabled=false;say((j.error||'That did not send.')+' You can also email admin@defvetbridge.com.','err')}}
+  catch(_){btn.disabled=false;say('That did not send. Please try again, or email admin@defvetbridge.com.','err')}});
+})();
 // Share: copy this page's address.
 document.getElementById('share').addEventListener('click',function(){const out=document.getElementById('shared'),url=location.href.split('#')[0];
  const done=()=>{out.textContent='Link copied: '+url};
