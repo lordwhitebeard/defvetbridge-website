@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DefVetBridge</title>
-<meta name="description" content="DefVetBridge (DVB) helps Australian veterans organise their medical and service records into evidence for a DVA claim. Built by a veteran. Support it with a donation.">
+<meta name="description" content="DefVetBridge (DVB) helps Australian veterans organise their medical and service records into evidence for a DVA claim. Built by a veteran.">
 <meta property="og:title" content="DefVetBridge: your records, organised for your DVA claim">
-<meta property="og:description" content="DVB reads a veteran's records, matches them to DVA Statements of Principles and builds a claim pack with every page cited. Help get it finished.">
+<meta property="og:description" content="DVB reads a veteran's records, matches them to DVA Statements of Principles and builds a claim pack with every page cited. Register your interest.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.defvetbridge.com/">
 <meta property="og:site_name" content="DefVetBridge">
@@ -28,7 +28,7 @@
   --ink:#102f4c;        /* wordmark navy: headings and body text */
   --ink-soft:#4a5d70;   /* secondary text */
   --green:#1d432e;      /* wordmark green */
-  --gold:#b88f40;       /* wordmark gold: donate, the one warm accent */
+  --gold:#b88f40;       /* wordmark gold: main buttons, the one warm accent */
   --gold-soft:#f3e6c6;  /* highlighter on the sample record */
   --rule:#d9e0e4;       /* hairlines */
   --on-accent:#ffffff;  /* text on green buttons and badges */
@@ -306,7 +306,6 @@ footer .bottom a{color:var(--ink-soft)}
     <a href="#guide">Free guide</a>
     <a href="#pack">Claim pack</a>
     <a href="#interest">Register interest</a>
-    <a href="#support">Support DVB</a>
     <a href="#faq">FAQ</a>
   </nav>
   <div class="tools">
@@ -317,7 +316,7 @@ footer .bottom a{color:var(--ink-soft)}
         <button type="button" data-t="dark" aria-pressed="false"><span class="sw" style="background:#13171F"></span>Dark</button>
         <button type="button" data-t="colourblind" aria-pressed="false"><span class="sw" style="background:#0072B2"></span>Colourblind</button>
       </div></details>
-    <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a>
+    <a class="btn btn-donate" href="#interest">Register interest</a>
   </div>
 </header>
 
@@ -336,11 +335,11 @@ footer .bottom a{color:var(--ink-soft)}
     <h1>Your records already hold the evidence. DVB helps you find it.</h1>
     <p>DefVetBridge reads a veteran's medical and service records, matches what it finds to the DVA's Statements of Principles, and shows which factors have evidence on file and which are still missing. Then it builds a claim pack with every page cited back to the original document.</p>
     <div class="actions">
-      <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Help get it finished</a>
+      <a class="btn btn-donate" href="#interest">Register your interest</a>
       <a class="btn btn-quiet" href="#how">How it works</a>
     </div>
     <p class="small">Built by a veteran going through the DVA claims process himself.</p>
-    <p class="guide-link">Want to use DVB when it opens? <a href="#interest">Register your interest</a>. Starting a claim? <a href="#guide">Get the free guide</a>.</p>
+    <p class="guide-link">Starting a claim? <a href="#guide">Get the free guide</a>, useful whether or not you use DVB.</p>
   </div>
 
   <figure class="record" aria-label="Example of a service medical record with one entry highlighted as evidence">
@@ -467,7 +466,6 @@ footer .bottom a{color:var(--ink-soft)}
         <li>No cost and no obligation</li>
         <li>Advocates and organisations are welcome too</li>
         <li>Your answers help decide what DVB does next</li>
-        <li><b>Donors get priority</b> for the first places when DVB opens</li>
       </ul>
     </div>
     <form class="eoi" id="eoi" novalidate>
@@ -494,45 +492,6 @@ footer .bottom a{color:var(--ink-soft)}
   </div>
 </section>
 
-<section class="band" id="support">
-  <div class="wrap">
-    <div class="donate">
-      <div class="head">
-        <span class="eyebrow" style="color:var(--gold)">Support DVB</span>
-        <h2>What your donation pays for</h2>
-        <p>Reading and organising one veteran's records costs roughly A$15 to A$100 in AI processing, depending on how many records they have. Every donation goes into getting more veterans' records read.</p>
-        <p class="first"><b>Donors go to the front of the queue.</b> When DVB opens to its first veterans and advocates outside the testing group, people who have donated will be offered a place first. Use the same email address on PayPal and when you <a href="#interest">register your interest</a>, so we can match you up.</p>
-      </div>
-      <div class="tiers">
-        <div><span class="amt">A$20</span><h3>A small record set</h3><p>Reads and indexes a veteran's records when there are only a few files.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
-        <div><span class="amt">A$50</span><h3>A typical veteran</h3><p>Covers the reading for most veterans' medical and service records.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
-        <div><span class="amt">A$100</span><h3>A large record set</h3><p>Hundreds of pages, including handwritten notes read page by page.</p><a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate</a></div>
-      </div>
-      <div class="split">
-        <div>
-          <h3>Where the money goes</h3>
-          <ul class="goes">
-            <li>AI processing so more veterans' records can be read</li>
-            <li>The server and storage that keep records private and secure</li>
-            <li>The time to finish DVB and open it to more veterans and advocates</li>
-          </ul>
-          <p class="note">You choose the amount on PayPal; any amount helps. DefVetBridge is a personal project, not a registered charity, so donations are not tax-deductible.</p>
-        </div>
-        <div>
-          <h3>Where it is up to</h3>
-          <ul class="progress">
-            <li class="done"><span class="mk"></span><span><b>Reading and indexing records</b>, including handwritten notes</span></li>
-            <li class="done"><span class="mk"></span><span><b>Matching conditions to SOP factors</b>, with evidence and gaps shown</span></li>
-            <li class="done"><span class="mk"></span><span><b>Claim packs</b> with pre-filled forms and highlighted, cited pages</span></li>
-            <li class="now"><span class="mk"></span><span><b>Reviewing the first real claim packs</b></span></li>
-            <li><span class="mk"></span><span><b>Opening it up to more veterans and advocates</b></span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="band" id="faq">
   <div class="wrap">
     <div class="intro">
@@ -545,7 +504,7 @@ footer .bottom a{color:var(--ink-soft)}
       <details><summary>Is it legal or medical advice?</summary><p>No. DVB organises evidence. It works alongside your advocate and your doctor, not instead of them. It never fills in the parts of a form that only a doctor can complete.</p></details>
       <details><summary>Who can see my records?</summary><p>Only you, and an advocate you choose to give access to. Each veteran's records are kept separate at the database level, and nothing is deleted without a record of what was removed.</p></details>
       <details><summary>Is there anything I can do now, before DVB is open?</summary><p>Yes. Start gathering your records. The <a href="#guide">free guide</a> shows how to request your Defence and DVA records and what other details to have ready. Records can take around 30 days to arrive, so it is worth starting early.</p></details>
-      <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. Donations help open it to more veterans and advocates sooner, and donors will be offered the first places. To hear when it opens, <a href="#interest">register your interest</a>.</p></details>
+      <details><summary>Can I use DVB now?</summary><p>Not yet. DVB is working with its first veterans and the first real claim packs are being reviewed. To hear when it opens, <a href="#interest">register your interest</a>.</p></details>
       <details><summary>Is DefVetBridge part of the DVA or Defence?</summary><p>No. It is an independent project built by a veteran. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></details>
     </div>
   </div>
@@ -556,12 +515,12 @@ footer .bottom a{color:var(--ink-soft)}
     <div class="final">
       <div class="copy">
         <span class="eyebrow">Next step</span>
-        <h2>Help get DVB finished</h2>
-        <p>A donation of any size goes into reading more veterans' records. If you know a veteran or an advocate who should hear about DVB, share this page with them.</p>
+        <h2>Know a veteran who needs this?</h2>
+        <p>If you know a veteran or an advocate who is working on a claim, share this page with them. The free guide helps straight away, and they can register their interest for when DVB opens.</p>
         <p class="contact">Questions, or want to help in another way? Email <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a>.</p>
       </div>
       <div class="acts">
-        <a class="btn btn-donate" href="https://www.paypal.com/donate?hosted_button_id=S4E4LCPC5ER3N" target="_blank" rel="noopener">Donate with PayPal</a>
+        <a class="btn btn-donate" href="#interest">Register your interest</a>
         <button class="btn btn-quiet" id="share" type="button">Copy link to share</button>
         <span class="share" id="shared" aria-live="polite"></span>
       </div>
@@ -575,7 +534,7 @@ footer .bottom a{color:var(--ink-soft)}
   <p>DefVetBridge is an independent project. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence. It organises evidence and does not provide legal, medical or financial advice.</p>
   <div class="bottom">
     <span>© 2026 DefVetBridge · Built in Brisbane by a veteran, for veterans · <a href="mailto:admin@defvetbridge.com">admin@defvetbridge.com</a></span>
-    <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#guide">Free guide</a><a href="#faq">FAQ</a><a href="#support">Support DVB</a></nav>
+    <nav aria-label="Footer"><a href="#why">Why DVB</a><a href="#how">How it works</a><a href="#guide">Free guide</a><a href="#faq">FAQ</a><a href="#interest">Register interest</a></nav>
   </div>
 </footer>
 </div>
