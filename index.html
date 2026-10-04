@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script>try{var t=localStorage.getItem("dvb-theme");if(t&&t!=="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<script>(function(){function ck(n){var m=document.cookie.match("(?:^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[1]):null}var d=document.documentElement,t=ck("dvb-theme");try{t=t||localStorage.getItem("dvb-theme")}catch(e){}if(t&&t!=="light")d.setAttribute("data-theme",t);if(ck("dvb-colours")==="1")d.classList.add("colours-picked")})()</script>
 <style>
 /* Layout: a light page in the wordmark's own colours. Sticky header with section links; hero (message + sample record);
    then full-width bands in the order of a one-page site: why, what it does, how, the work (a claim pack), support, FAQ, final step. */
@@ -105,6 +105,7 @@ details.themes .menu button[aria-pressed="true"]{font-weight:700;color:var(--gre
 .svc-airforce{background:#0F2A47;color:#E4F1FB}.svc-airforce .badge{color:#4FA8DA}
 .svc[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 35%,transparent)}
 @media (max-width:640px){.svc-row{width:100%}.svc{flex:1 1 30%;flex-direction:column;text-align:center;padding:.6rem .4rem;gap:.4rem}.svc small{display:none}}
+.colours-picked .services{display:none}
 .sw{width:.95rem;height:.95rem;border-radius:50%;border:1px solid var(--rule);flex-shrink:0}
 nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
 nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .6em;border-radius:5px;white-space:nowrap}
@@ -311,6 +312,9 @@ footer .bottom a{color:var(--ink-soft)}
   <div class="tools">
     <details class="themes"><summary class="tbtn" title="More themes" aria-label="More themes">Theme <span aria-hidden="true">&#9662;</span></summary>
       <div class="menu">
+        <button type="button" data-t="army" aria-pressed="false"><span class="sw" style="background:#2B3020;border-color:#C9A227"></span>Army</button>
+        <button type="button" data-t="navy" aria-pressed="false"><span class="sw" style="background:#0C1F4D;border-color:#D4AF37"></span>Navy</button>
+        <button type="button" data-t="airforce" aria-pressed="false"><span class="sw" style="background:#0F2A47;border-color:#4FA8DA"></span>Air Force</button>
         <button type="button" data-t="light" aria-pressed="false"><span class="sw" style="background:#f4f6f5"></span>Light</button>
         <button type="button" data-t="defvetbridge" aria-pressed="false"><span class="sw" style="background:#14B8A6"></span>DefVetBridge</button>
         <button type="button" data-t="dark" aria-pressed="false"><span class="sw" style="background:#13171F"></span>Dark</button>
@@ -566,8 +570,9 @@ footer .bottom a{color:var(--ink-soft)}
 // Themes (same seven as the DVB app): service buttons + menu in the header; remembered in this browser only.
 (function(){const root=document.documentElement,btns=[...document.querySelectorAll('[data-t]')],dd=document.querySelector('details.themes');
  function mark(t){btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.t===t)))}
- function set(t){if(t==='light')root.removeAttribute('data-theme');else root.setAttribute('data-theme',t);try{localStorage.setItem('dvb-theme',t)}catch(e){}mark(t);if(dd)dd.open=false}
- btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.t)));mark(root.getAttribute('data-theme')||'light');
+ const keep=(n,v)=>{document.cookie=n+'='+encodeURIComponent(v)+';path=/;max-age=31536000;SameSite=Lax'};
+ function set(t){if(t==='light')root.removeAttribute('data-theme');else root.setAttribute('data-theme',t);keep('dvb-theme',t);try{localStorage.setItem('dvb-theme',t)}catch(e){}mark(t);if(dd)dd.open=false}
+ btns.forEach(b=>b.addEventListener('click',()=>{set(b.dataset.t);if(b.closest('.services')){keep('dvb-colours','1');root.classList.add('colours-picked')}}));mark(root.getAttribute('data-theme')||'light');
  document.addEventListener('click',e=>{if(dd&&dd.open&&!dd.contains(e.target))dd.open=false});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dd)dd.open=false});})();
 // Share: copy this page's address.
