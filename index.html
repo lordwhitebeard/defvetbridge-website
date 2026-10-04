@@ -91,6 +91,20 @@ details.themes .menu{position:absolute;right:0;top:calc(100% + .4rem);z-index:20
 details.themes .menu button{all:unset;cursor:pointer;display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;border-radius:5px;color:var(--ink);font:500 .93rem/1.2 var(--sans)}
 details.themes .menu button:hover,details.themes .menu button:focus-visible{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 details.themes .menu button[aria-pressed="true"]{font-weight:700;color:var(--green)}
+.services{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.5rem;margin-top:1rem;padding:1rem 1.2rem;background:var(--sheet);border:1px solid var(--rule);border-radius:10px}
+.services>p{margin:0;font-size:1.05rem;color:var(--ink-soft)}.services>p b{color:var(--ink)}
+.svc-row{display:flex;flex-wrap:wrap;gap:.7rem}
+.svc{display:flex;align-items:center;gap:.7rem;padding:.55rem 1rem .55rem .6rem;border-radius:8px;border:2px solid transparent;cursor:pointer;font:inherit;text-align:left;transition:transform .15s}
+.svc:hover{transform:translateY(-2px)}
+.svc b{display:block;font-size:1.02rem;line-height:1.2}.svc small{display:block;font-size:.78rem;opacity:.85}
+.svc .badge{width:2.6rem;height:2.6rem;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12);overflow:hidden}
+.svc .badge img{width:100%;height:100%;object-fit:contain}.svc .badge img+svg{display:none}
+.svc .badge svg{width:1.5rem;height:1.5rem}
+.svc-army{background:#2B3020;color:#E8E4D8}.svc-army .badge{color:#C9A227}
+.svc-navy{background:#0C1F4D;color:#E6ECF5}.svc-navy .badge{color:#D4AF37}
+.svc-airforce{background:#0F2A47;color:#E4F1FB}.svc-airforce .badge{color:#4FA8DA}
+.svc[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 35%,transparent)}
+@media (max-width:640px){.svc-row{width:100%}.svc{flex:1 1 30%;flex-direction:column;text-align:center;padding:.6rem .4rem;gap:.4rem}.svc small{display:none}}
 .sw{width:.95rem;height:.95rem;border-radius:50%;border:1px solid var(--rule);flex-shrink:0}
 nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
 nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .6em;border-radius:5px;white-space:nowrap}
@@ -296,9 +310,6 @@ footer .bottom a{color:var(--ink-soft)}
     <a href="#faq">FAQ</a>
   </nav>
   <div class="tools">
-    <button class="tbtn" type="button" data-t="army" aria-pressed="false" title="Army theme" aria-label="Army theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></button>
-    <button class="tbtn" type="button" data-t="navy" aria-pressed="false" title="Navy theme" aria-label="Navy theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v13M8 11h8M4.5 13.5A7.5 7.5 0 0 0 12 20a7.5 7.5 0 0 0 7.5-6.5"/></svg></button>
-    <button class="tbtn" type="button" data-t="airforce" aria-pressed="false" title="Air Force theme" aria-label="Air Force theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 21l1.5-1 1.5 1v-2.5l-1-1V13l8 3v-2l-8-5V4.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-3v4.5l-1 1z" transform="translate(1.5 0)"/></svg></button>
     <details class="themes"><summary class="tbtn" title="More themes" aria-label="More themes">Theme <span aria-hidden="true">&#9662;</span></summary>
       <div class="menu">
         <button type="button" data-t="light" aria-pressed="false"><span class="sw" style="background:#f4f6f5"></span>Light</button>
@@ -311,6 +322,14 @@ footer .bottom a{color:var(--ink-soft)}
 </header>
 
 <main id="top">
+<section class="services" aria-label="Choose your service's colours">
+  <p>Served? <b>Show your colours.</b></p>
+  <div class="svc-row">
+    <button class="svc svc-army" type="button" data-t="army" aria-pressed="false"><span class="badge"><img src="badge-army.png" alt="" onerror="this.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span><b>Army</b><small>Olive &amp; gold</small></span></button>
+    <button class="svc svc-navy" type="button" data-t="navy" aria-pressed="false"><span class="badge"><img src="badge-navy.png" alt="" onerror="this.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v13M8 11h8M4.5 13.5A7.5 7.5 0 0 0 12 20a7.5 7.5 0 0 0 7.5-6.5"/></svg></span><span><b>Navy</b><small>Navy &amp; gold</small></span></button>
+    <button class="svc svc-airforce" type="button" data-t="airforce" aria-pressed="false"><span class="badge"><img src="badge-airforce.png" alt="" onerror="this.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 21l1.5-1 1.5 1v-2.5l-1-1V13l8 3v-2l-8-5V4.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-3v4.5l-1 1z" transform="translate(1.5 0)"/></svg></span><span><b>Air Force</b><small>RAAF blue</small></span></button>
+  </div>
+</section>
 <section class="hero">
   <div class="lede">
     <span class="eyebrow">For Australian veterans and their advocates</span>
