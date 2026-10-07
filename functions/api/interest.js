@@ -77,7 +77,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
 // ---------- emails (Resend) ----------
 const SITE = "https://www.defvetbridge.com";
-const GUIDE = SITE + "/DVB_Getting_Ready_For_Your_DVA_Claim.pdf";
+const GUIDE = SITE + "/VeteransGuide.pdf";
 const FROM = "Graham at DefVetBridge <admin@defvetbridge.com>";
 const ADMIN = "admin@defvetbridge.com";
 const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -99,7 +99,7 @@ function welcome(rec) {
     `Thanks for registering your interest in DefVetBridge. You are on the list, and I will email you when there is a place for you.`,
     ``,
     `While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive.`,
-    `Free guide, "Getting ready for your DVA claim" (PDF): ${GUIDE}`,
+    `Free guide, "Veterans Guide" (PDF): ${GUIDE}`,
     ``,
     `Graham Kissell`,
     `DefVetBridge | ${SITE}`,
@@ -115,7 +115,7 @@ function welcome(rec) {
 <tr><td style="padding:8px 28px 4px;font-size:16px;line-height:1.6">
 <p style="margin:0 0 14px">Hi ${esc(first)},</p>
 <p style="margin:0 0 14px">Thanks for registering your interest in <b>DefVetBridge</b>. You are on the list, and I will email you when there is a place for you.</p>
-<p style="margin:0 0 18px">While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive, and this free two-page guide shows you how to ask for them.</p>
+<p style="margin:0 0 18px">While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive, and this free plain-English guide shows you where to find them and how to ask for them.</p>
 <p style="margin:0 0 22px">${btn(GUIDE, "Get the free guide (PDF)", "#1d432e", "#ffffff")}</p>
 <p style="margin:0 0 4px">Graham Kissell</p>
 <p style="margin:0 0 24px"><a href="${SITE}" style="color:#1d432e">DefVetBridge</a></p>
