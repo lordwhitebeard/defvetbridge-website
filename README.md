@@ -19,3 +19,4 @@ The one-page public website for DefVetBridge (DVB): what it is, how it works, an
 DVB is an independent tool that helps veterans organise their own evidence. It does not give legal or medical advice and is not affiliated with, or endorsed by, the Department of Veterans' Affairs.
 
 This repository holds only the public website. The DVB application itself lives elsewhere.
+
