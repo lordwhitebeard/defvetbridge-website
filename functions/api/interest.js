@@ -6,6 +6,10 @@
 // Emails (optional, via Resend): set the secret RESEND_API_KEY on the Pages project. A NEW sign-up then gets one
 // confirmation email (free guide link), and admin@ gets a note. Re-submissions update the row, no email.
 // Without the key, sign-ups still save and no email is sent.
+// Mailing list (12/10/2026): set the secret RESEND_FULL_KEY (a Resend key with Full access; the sending-only key cannot
+// create contacts). A NEW sign-up is then also added to the Resend segment General (id below, or the variable
+// RESEND_SEGMENT_ID) so it can receive Broadcasts. Re-submissions are not re-added, so a person who unsubscribed in
+// Resend is never put back. A failure never loses the sign-up. Without the key nothing is added.
 
 const ROLES = ["Veteran", "Advocate", "Family member", "Organisation", "Other"];
 const STATES = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA", "Outside Australia"];
@@ -72,6 +76,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
     const job = sendEmails(env, rec).catch(() => {});   // an email failure never loses the sign-up
     if (typeof waitUntil === "function") waitUntil(job); else await job;
   }
+  if (row && Number(row.is_new) === 1 && env.RESEND_FULL_KEY) {
+    const job2 = addContact(env, rec).catch(() => {});   // a mailing list failure never loses the sign-up
+    if (typeof waitUntil === "function") waitUntil(job2); else await job2;
+  }
   return json(200, { ok: true });
 }
 
@@ -133,6 +141,22 @@ async function sendEmails(env, rec) {
   const note = [`New interest sign-up`, ``, `Name: ${rec.name}`, `Email: ${rec.email}`, `I am a: ${rec.role}`,
     `State: ${rec.state || "-"}`, `Message: ${rec.message || "-"}`].join("\n");
   await resend(env, { from: FROM, to: [ADMIN], reply_to: rec.email, subject: `New DVB sign-up: ${rec.name} (${rec.role})`, text: note });
+}
+
+// ---------- mailing list (Resend contacts) ----------
+const SEGMENT_GENERAL = "8fc0679f-d437-4f71-82bc-4106f111ed91";   // Resend > Audience > Segments > General
+
+async function addContact(env, rec) {
+  const parts = rec.name.split(/\s+/);
+  const body = { email: rec.email, first_name: parts[0] || "", unsubscribed: false,
+    segments: [{ id: env.RESEND_SEGMENT_ID || SEGMENT_GENERAL }] };
+  if (parts.length > 1) body.last_name = parts.slice(1).join(" ");
+  const r = await fetch("https://api.resend.com/contacts", {
+    method: "POST",
+    headers: { authorization: "Bearer " + env.RESEND_FULL_KEY, "content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) throw new Error("resend contacts " + r.status);
 }
 
 export function onRequest() {
