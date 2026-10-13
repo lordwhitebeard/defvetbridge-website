@@ -220,6 +220,11 @@ form.eoi.done .field{display:none}
 .sheets b{display:block}
 .sheets span.d{color:var(--ink-soft);font-size:.92rem}
 .sheets .hl{background:linear-gradient(transparent 55%,var(--gold-soft) 55%)}
+.pack .sample{display:grid;gap:.6rem;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:1rem 1.2rem}
+.pack .sample h3{font-size:1.05rem;margin:0}
+.pack .sample p{font-size:.92rem;margin:0}
+.pack .sample .dl{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem}
+.pack .sample .meta{font-size:.85rem;color:var(--ink-soft)}
 
 /* support / investment */
 .donate{background:var(--band);color:var(--band-ink);border:1px solid var(--rule);border-radius:10px;padding:clamp(2rem,5vw,3.5rem);display:grid;gap:2rem}
@@ -449,13 +454,18 @@ footer .bottom a{color:var(--ink-soft)}
       <h2>Inside a claim pack</h2>
       <p>A claim pack is one PDF that puts the forms and the proof side by side. Every quote in it links to the exact page it came from, so an advocate or a DVA delegate can check it in seconds.</p>
       <p class="fact">A real pack built for one knee claim ran to 188 pages, with every cited line highlighted and linked back to its source document.</p>
+      <div class="sample" id="sample">
+        <h3>See a sample claim pack</h3>
+        <p>This is a complete pack for a <b>fictional veteran</b>, Howard Green, built from invented records. It shows how DVB lays out the forms, the evidence index and the cited pages. Every page is stamped as a sample.</p>
+        <div class="dl"><a class="btn btn-green" href="Howard_Green_Sample_Claim_Pack.pdf" target="_blank" rel="noopener">Open the sample pack</a><span class="meta">PDF, 60 pages, about 4 MB</span></div>
+        <p class="meta">Fictional person and records. It is not a real claim, it is not advice, and it does not predict any outcome. DefVetBridge is not part of, or endorsed by, the Department of Veterans' Affairs.</p>
+      </div>
     </div>
     <ol class="sheets" aria-label="The parts of a claim pack, in order">
-      <li><span class="pg">Cover</span><span><b>Contents</b><span class="d">Each claim, what it covers, and how strong its evidence is.</span></span></li>
-      <li><span class="pg">Forms</span><span><b>DVA forms, pre-filled</b><span class="d">Your details, service and injury dates, ready to check and sign.</span></span></li>
-      <li><span class="pg">Index</span><span><b>Evidence index</b><span class="d">Each Statement of Principles factor and the quote that supports it.</span></span></li>
-      <li><span class="pg">E1–E12</span><span><b>Cited pages</b><span class="d">The original pages, with the <span class="hl">relevant lines highlighted</span>.</span></span></li>
-      <li><span class="pg">A1–A9</span><span><b>Appendix</b><span class="d">Each source document in full, so nothing is taken out of context.</span></span></li>
+      <li><span class="pg">Cover</span><span><b>Contents and guide</b><span class="d">What the pack is, how it is put together, and each claim it covers.</span></span></li>
+      <li><span class="pg">Part 1</span><span><b>DVA forms, pre-filled</b><span class="d">Your details, service and injury dates, ready to check and sign.</span></span></li>
+      <li><span class="pg">Part 2</span><span><b>Evidence for each injury</b><span class="d">The evidence index, then the exact pages cited, with the <span class="hl">relevant lines highlighted</span>.</span></span></li>
+      <li><span class="pg">Part 3</span><span><b>Core reference files</b><span class="d">Source documents in full where a page needs its context, each one marked with the claims it is used for.</span></span></li>
     </ol>
   </div>
 </section>
