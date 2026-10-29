@@ -184,6 +184,14 @@ section.band>.wrap{display:grid;gap:2rem}
 .btn-green{background:var(--green);color:var(--on-accent);border-color:var(--green)}.btn-green:hover{filter:brightness(.9)}
 .hero .guide-link{font-size:.95rem;color:var(--ink-soft)}.hero .guide-link a{font-weight:700}
 
+/* what's new */
+.news{display:grid;gap:1rem}
+.news-item{background:var(--sheet);border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:6px;padding:clamp(1.3rem,3vw,2rem);display:grid;gap:.8rem}
+.news-item .date{font:700 .72rem/1 var(--typed);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.news-item p{color:var(--ink-soft)}
+.news-item .dl{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:.3rem}
+.news-item .meta{font-size:.88rem;color:var(--ink-soft)}
+
 /* register interest */
 .interest{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .interest>*{min-width:0}
@@ -306,6 +314,7 @@ footer .bottom a{color:var(--ink-soft)}
 <header class="top">
   <a class="brand" href="#top" aria-label="DefVetBridge home"><img src="DVB_wordmark.png" alt="DVB" width="113" height="52"><span>DefVetBridge</span></a>
   <nav class="sections" aria-label="Sections">
+    <a href="#news">What's new</a>
     <a href="#why">Why DVB</a>
     <a href="#what">What it does</a>
     <a href="#how">How it works</a>
@@ -366,6 +375,25 @@ footer .bottom a{color:var(--ink-soft)}
       <div><span>Current diagnosis from a doctor</span><span class="gap">Gap: needed</span></div>
     </div>
   </figure>
+</section>
+
+<section class="band" id="news">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">What's new</span>
+      <h2>News from DefVetBridge</h2>
+    </div>
+    <div class="news">
+      <article class="news-item">
+        <span class="date">29 October 2026</span>
+        <h3>We are choosing our first testers</h3>
+        <p>DefVetBridge is opening to a small first group of testers. We want people at every stage of a DVA claim: not yet started, lodged and waiting, or with a decision already made. Veterans, family members, carers and advocates are all welcome, including veterans working with an advocate or a lawyer.</p>
+        <p>Each tester gets a 100% discount code to build one full claim pack, at no cost. You review the pack and decide whether to lodge it with DVA yourself. All we ask in return is your honest feedback.</p>
+        <div class="dl"><a class="btn btn-donate" href="https://tally.so/r/BEEYdR?code=website" target="_blank" rel="noopener">Take the 3-minute survey</a><a class="btn btn-quiet" href="#interest">Register your interest</a></div>
+        <p class="meta">To be considered as a tester, tick the last question in the survey. Register your interest as well, so we can keep you updated. The survey runs on Tally; your answers are used only to choose testers and decide what DVB does next.</p>
+      </article>
+    </div>
+  </div>
 </section>
 
 <section class="band" id="why">
