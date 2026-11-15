@@ -113,6 +113,11 @@ nav.sections{display:flex;align-items:center;gap:.1rem;margin-inline:auto 0}
 nav.sections a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.93rem;padding:.5em .6em;border-radius:5px;white-space:nowrap}
 nav.sections a:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 nav.sections a.on{color:var(--green);box-shadow:inset 0 -2px 0 var(--green);border-radius:5px 5px 0 0}
+/* New news the visitor has not seen: gold dot + "New" on the What's new link (pulses 6 times, then stays still) */
+nav.sections a.has-new{position:relative}
+nav.sections a.has-new::after{content:"New";display:inline-block;margin-left:.4em;padding:.15em .45em;border-radius:999px;background:var(--gold);color:#1c1405;font-size:.7rem;font-weight:800;letter-spacing:.04em;vertical-align:.1em;animation:newpulse 1.2s ease-in-out 6}
+@keyframes newpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.92)}}
+@media (prefers-reduced-motion:reduce){nav.sections a.has-new::after{animation:none}}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem)}
@@ -387,9 +392,9 @@ footer .bottom a{color:var(--ink-soft)}
     </div>
     <div class="news">
       <article class="news-item">
-        <span class="date">15 November 2026</span>
+        <span class="date" data-d="2026-11-15">15 November 2026</span>
         <h3>Your records are now read in Australia</h3>
-        <p>You asked, and we listened. Veterans told us they want their records kept in Australia, under Australian privacy law. As of today, every page Evocatus reads is processed by Amazon's Australian data centres in Sydney and Melbourne. The system refuses to use any AI service outside Australia, and it will not start at all if that setting is missing.</p>
+        <p>You asked, and we listened. Veterans told us they want their records kept in Australia, under Australian privacy law. As of today, Evocatus uses Claude, the AI made by Anthropic, running on Amazon Web Services' Australian-only servers in Sydney and Melbourne. Your records are read in Australia, and the system is locked so it cannot use any AI service outside it. It will not start at all if that setting is missing. The AI runs inside Amazon's systems, so the company that built it never sees your records.</p>
         <p>This covers Evocatus for veterans and Evocatus Professional for advocates and firms. Our tests on a full set of sample records showed the same quality of reading as before.</p>
         <p>We are also using this week to tighten security even further before the first testers arrive. Your records are sensitive, and the people trusting us with them deserve that care from day one.</p>
         <p>Because of this work, the tester pilot starts <b>one week later</b> than planned. We think that is a good trade.</p>
@@ -397,7 +402,7 @@ footer .bottom a{color:var(--ink-soft)}
         <p class="meta">Thank you to every veteran who spoke up. This change came straight from you.</p>
       </article>
       <article class="news-item">
-        <span class="date">12 November 2026</span>
+        <span class="date" data-d="2026-11-12">12 November 2026</span>
         <h3>DefVetBridge is now Evocatus</h3>
         <p>We have a new name. DefVetBridge is now Evocatus. The tool, the person behind it and what it does for you are the same.</p>
         <p>In the Roman army, an evocatus was a soldier who had finished his service and been honourably discharged, then chose to come back when he was called on. The word comes from the Latin for "called out". The evocati were valued for their experience, and they served beside the soldiers who needed it.</p>
@@ -406,7 +411,7 @@ footer .bottom a{color:var(--ink-soft)}
         <p class="meta">Nothing changes for you. Your account, your records and your claim packs are exactly as you left them. The old address, defvetbridge.com, still works, and you can also find us at evocatus.com.au.</p>
       </article>
       <article class="news-item">
-        <span class="date">29 October 2026</span>
+        <span class="date" data-d="2026-10-29">29 October 2026</span>
         <h3>We are choosing our first testers</h3>
         <p>DefVetBridge is opening to a small first group of testers. We want people at every stage of a DVA claim: not yet started, lodged and waiting, or with a decision already made. Veterans, family members, carers and advocates are all welcome, including veterans working with an advocate or a lawyer.</p>
         <p>Each tester gets a 100% discount code to build one full claim pack, at no cost. You review the pack and decide whether to lodge it with DVA yourself. All we ask in return is your honest feedback.</p>
@@ -634,6 +639,16 @@ footer .bottom a{color:var(--ink-soft)}
  btns.forEach(b=>b.addEventListener('click',()=>{set(b.dataset.t);if(b.closest('.services')){keep('dvb-colours','1');root.classList.add('colours-picked')}}));mark(root.getAttribute('data-theme')||'light');
  document.addEventListener('click',e=>{if(dd&&dd.open&&!dd.contains(e.target))dd.open=false});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dd)dd.open=false});})();
+// What's new: mark the menu link "New" until this visitor has seen the newest news item (remembered in this browser only).
+(function(){const link=document.querySelector('nav.sections a[href="#news"]'),sec=document.getElementById('news');if(!link||!sec)return;
+ const dates=[...sec.querySelectorAll('.news-item .date[data-d]')].map(e=>e.dataset.d).sort();const newest=dates[dates.length-1];if(!newest)return;
+ let seen=null;try{seen=localStorage.getItem('evo-news-seen')}catch(e){}
+ if(seen&&seen>=newest)return;
+ link.classList.add('has-new');
+ const markSeen=()=>{link.classList.remove('has-new');try{localStorage.setItem('evo-news-seen',newest)}catch(e){}};
+ link.addEventListener('click',markSeen);
+ if('IntersectionObserver' in window){const first=sec.querySelector('.news-item');const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){markSeen();io.disconnect()}},{threshold:.6});io.observe(first)}
+})();
 // Share: copy this page's address.
 document.getElementById('share').addEventListener('click',function(){const out=document.getElementById('shared'),url=location.href.split('#')[0];
  const done=()=>{out.textContent='Link copied: '+url};
