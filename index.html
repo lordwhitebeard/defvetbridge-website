@@ -240,6 +240,11 @@ form.eoi.done .field{display:none}
 .pack .sample p{font-size:.92rem;margin:0}
 .pack .sample .dl{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem}
 .pack .sample .meta{font-size:.85rem;color:var(--ink-soft)}
+.pack .sample.with-thumb{grid-template-columns:auto 1fr;align-items:start;column-gap:1.2rem}
+.pack .sample .thumb{display:block;width:clamp(7.5rem,13vw,9.5rem);transform:rotate(-1.5deg);border:1px solid var(--rule);box-shadow:0 14px 28px -18px rgba(16,47,76,.45);border-radius:3px;overflow:hidden;background:#fff;margin-top:.2rem}
+.pack .sample .thumb img{display:block;width:100%;height:auto}
+.pack .sample .txt{display:grid;gap:.6rem;min-width:0}
+@media (max-width:640px){.pack .sample.with-thumb{grid-template-columns:1fr}.pack .sample .thumb{justify-self:center;margin-bottom:.4rem}}
 
 /* support / investment */
 .donate{background:var(--band);color:var(--band-ink);border:1px solid var(--rule);border-radius:10px;padding:clamp(2rem,5vw,3.5rem);display:grid;gap:2rem}
@@ -508,11 +513,14 @@ footer .bottom a{color:var(--ink-soft)}
       <h2>Inside a claim pack</h2>
       <p>A claim pack is one PDF that puts the forms and the proof side by side. Every quote in it links to the exact page it came from, so an advocate or a DVA delegate can check it in seconds.</p>
       <p class="fact">A real pack built for one knee claim ran to 188 pages, with every cited line highlighted and linked back to its source document.</p>
-      <div class="sample" id="sample">
+      <div class="sample with-thumb" id="sample">
+        <a class="thumb" href="Howard_Green_Sample_Claim_Pack.pdf" target="_blank" rel="noopener" aria-label="Open the sample claim pack (PDF)"><img src="pack-preview.jpg" alt="Cover of the sample Evocatus claim pack for Howard Green, a fictional veteran, stamped SAMPLE" width="728" height="1029" loading="lazy"></a>
+        <div class="txt">
         <h3>See a sample claim pack</h3>
         <p>This is a complete pack for a <b>fictional veteran</b>, Howard Green, built from invented records: a left knee claim from a 1996 training injury. It was built on the new Evocatus, with every record read in Australia. It shows how Evocatus lays out the forms, the evidence index and the cited pages, including where the evidence still has a gap. Every page is stamped as a sample.</p>
         <div class="dl"><a class="btn btn-green" href="Howard_Green_Sample_Claim_Pack.pdf" target="_blank" rel="noopener">Open the sample pack</a><span class="meta">PDF, 28 pages, about 2 MB</span></div>
         <p class="meta">Fictional person and records. It is not a real claim, it is not advice, and it does not predict any outcome. Evocatus is not part of, or endorsed by, the Department of Veterans' Affairs.</p>
+        </div>
       </div>
     </div>
     <ol class="sheets" aria-label="The parts of a claim pack, in order">
