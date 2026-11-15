@@ -318,6 +318,44 @@ footer .bottom a{color:var(--ink-soft)}
   header.top .brand img{height:44px}
   .record li{grid-template-columns:1fr;gap:0}
 }
+/* pictures: line drawings that take the theme's colours */
+.ico{width:3rem;height:3rem;color:var(--green);margin-bottom:.15rem}
+.pic{width:100%;max-width:11rem;height:auto;color:var(--ink);margin-bottom:.4rem}
+.ico .ac,.pic .ac,.buried .ac{stroke:var(--gold)}
+.ico .dot,.buried .dot{fill:var(--gold)}
+.ico .hl,.pic .hl,.buried .hl{fill:var(--gold-soft);stroke:none}
+.ico .sh,.pic .sh,.buried .sh{fill:var(--sheet)}
+.caps>div{position:relative}
+.steps li{padding-top:1.2rem}
+.buried{width:100%;max-width:26rem;height:auto;color:var(--ink);margin-top:.6rem}
+.buried .pile rect{stroke:var(--ink-soft)}
+.buried .faint{stroke:var(--rule)}
+.buried .t{font:700 13px var(--typed);fill:var(--ink);stroke:none;letter-spacing:.04em}
+.buried .tagbox{fill:var(--green);stroke:none}
+.buried .tt{font:700 11px var(--sans);fill:var(--on-accent);stroke:none}
+.why .side{display:grid;gap:1.2rem;min-width:0}
+.founder{margin:0;display:grid;grid-template-columns:8.5rem 1fr;gap:1.1rem;align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:.9rem}
+.founder img{display:block;width:100%;height:auto;border-radius:4px}
+.founder figcaption{color:var(--ink-soft);font-size:.98rem}
+.founder figcaption b{color:var(--ink)}
+.founder .fam{display:block;margin-top:.55rem;font-size:.92rem}
+.news-item.has-crest{grid-template-columns:1fr minmax(13rem,17rem);column-gap:clamp(1.5rem,4vw,3rem)}
+.news-item.has-crest>*{grid-column:1;min-width:0}
+.news-item.has-crest>.crest{grid-column:2;grid-row:1/span 7;align-self:center}
+.crest{margin:0;display:grid;gap:.9rem}
+.crest .art{position:relative;background:#f7f3ea;border:1px solid var(--rule);border-radius:8px;padding:1.3rem 1rem 1rem}
+.crest .art img{display:block;width:100%;height:auto}
+.pin{display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--gold);color:#1c1405;font:800 .8rem/1 var(--sans)}
+.crest .art .pin{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 3px #f7f3ea}
+.crest .art .p1{left:22%;top:58%}
+.crest .art .p2{left:80%;top:84%}
+.crest figcaption{display:grid;gap:.5rem;font-size:.92rem;color:var(--ink-soft)}
+.crest figcaption span{display:grid;grid-template-columns:1.5rem 1fr;gap:.6rem;align-items:start}
+@media (max-width:900px){
+  .news-item.has-crest{grid-template-columns:1fr}
+  .news-item.has-crest>.crest{grid-column:1;grid-row:auto;max-width:20rem;order:9}
+}
+@media (max-width:640px){.founder{grid-template-columns:6.5rem 1fr}.pic{max-width:9rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -406,7 +444,11 @@ footer .bottom a{color:var(--ink-soft)}
         <div class="dl"><a class="btn btn-donate" href="https://tally.so/r/BEEYdR?code=website" target="_blank" rel="noopener">Take the 3-minute survey</a><a class="btn btn-quiet" href="#interest">Register your interest</a></div>
         <p class="meta">Thank you to everyone who has registered their interest. We will be in touch before the pilot opens.</p>
       </article>
-      <article class="news-item">
+      <article class="news-item has-crest">
+        <figure class="crest" aria-label="The Evocatus logo: a helmet with a stitched scar, resting on an open book">
+          <div class="art"><img src="Evocatus_emblem.svg" alt="" width="537" height="453" loading="lazy"><span class="pin p1">1</span><span class="pin p2">2</span></div>
+          <figcaption><span><b class="pin">1</b> The scar: what service leaves behind.</span><span><b class="pin">2</b> The book: your records, where the evidence already is.</span></figcaption>
+        </figure>
         <span class="date" data-d="2026-11-12">12 November 2026</span>
         <h3>DefVetBridge is now Evocatus</h3>
         <p>We have a new name. DefVetBridge is now Evocatus. The tool, the person behind it and what it does for you are the same.</p>
@@ -435,11 +477,23 @@ footer .bottom a{color:var(--ink-soft)}
         <h2>The evidence exists. It is buried.</h2>
         <p>A DVA claim succeeds or stalls on evidence: proof that something happened during service and that it is linked to the condition you have now. That proof is usually in your own records, spread across hundreds of pages written decades ago.</p>
         <p>Graham Kissell, a former ADF member in Brisbane, hit this wall with his own claim. The evidence was in his files, but finding the right lines by hand meant days of reading. So he built Evocatus to do the finding, and to set out the result so an advocate and the DVA can check it.</p>
+        <svg class="buried" viewBox="0 0 320 150" role="img" aria-label="A thick stack of records with one line picked out and enlarged" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<g class="pile"><rect class="sh" x="22" y="30" width="92" height="112" rx="2" transform="rotate(-7 68 86)"/><rect class="sh" x="28" y="26" width="92" height="112" rx="2" transform="rotate(5 74 82)"/><rect class="sh" x="24" y="22" width="92" height="112" rx="2" transform="rotate(-3 70 78)"/><rect class="sh" x="30" y="18" width="92" height="112" rx="2" transform="rotate(2 76 74)"/><rect class="sh" x="27" y="14" width="92" height="112" rx="2"/></g>
+<path class="faint" d="M37 28h66M37 38h58M37 48h70M37 58h50M37 82h66M37 92h54M37 102h70M37 112h46"/>
+<rect class="hl" x="34" y="65" width="78" height="10" rx="1.500"/><path d="M37 70h70"/>
+<path class="ac" d="M112 70h28c12 0 8-8 20-8h14"/><circle class="ac dot" cx="112" cy="70" r="2.500"/>
+<rect class="sh card" x="176" y="34" width="132" height="62" rx="4"/>
+<text class="t" x="188" y="57">14 FEB 91</text><path d="M188 68h108M188 79h76"/>
+<rect class="tagbox" x="176" y="106" width="30" height="20" rx="3"/><text class="tt" x="191" y="120" text-anchor="middle">E2</text><path class="faint" d="M214 116h78"/>
+</svg>
       </div>
+      <div class="side">
+      <figure class="founder"><img src="graham-kissell.jpg" alt="Graham Kissell in a suit, wearing his own medal on his left and his grandfather's medals on his right" width="640" height="800" loading="lazy"><figcaption><b>Graham Kissell</b>, Army veteran and the builder of Evocatus, wearing his own medal on his left and his grandfather's medals on his right.<span class="fam">Service runs in the family. Graham's grandfather served in the Second World War, including in Egypt. Graham served in the Army, and his son served in the Navy.</span></figcaption></figure>
       <div class="card">
         <h3>Built from real use</h3>
         <p>Evocatus was built on real records, starting with Graham's own. It is now in use with a small group of veterans, and their first claim packs are being reviewed line by line.</p>
         <p>It is self-funded, with no company or government money behind it.</p>
+      </div>
       </div>
     </div>
     <div class="problem">
@@ -457,16 +511,16 @@ footer .bottom a{color:var(--ink-soft)}
       <h2>Everything between your records and a claim</h2>
     </div>
     <div class="caps">
-      <div><span class="k">Read</span><h3>Reads typed and handwritten records</h3><p>Scanned medical notes, service records and specialist letters, including handwriting that ordinary text search misses.</p></div>
-      <div><span class="k">Find</span><h3>Finds conditions, dates and injuries</h3><p>Pulls out each condition, when it was first recorded, which side of the body, and who treated it.</p></div>
-      <div><span class="k">Group</span><h3>Groups records into injuries</h3><p>Fifteen notes about one shoulder become one shoulder injury, so nothing is counted twice or missed.</p></div>
-      <div><span class="k">Match</span><h3>Matches to the right SOP</h3><p>Each condition is matched to its Statement of Principles, so the evidence is checked against the factors that actually apply.</p></div>
-      <div><span class="k">Check</span><h3>Shows evidence and gaps</h3><p>For every factor: the pages that support it, or a clear note that nothing on file does yet.</p></div>
-      <div><span class="k">Build</span><h3>Builds the claim pack</h3><p>Pre-filled DVA forms and the cited pages in one PDF, ready for you and your advocate to check.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h17l8 8v28H12z"/><path d="M29 6v8h8"/><path d="M17 21h14M17 35h9"/><path class="ac" d="M17 28c2-3 4 3 6 0s4 3 6 0 2 2 3 0"/></svg><span class="k">Read</span><h3>Reads typed and handwritten records</h3><p>Scanned medical notes, service records and specialist letters, including handwriting that ordinary text search misses.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11"/><path class="ac" d="M21 15v12M15 21h12"/></svg><span class="k">Find</span><h3>Finds conditions, dates and injuries</h3><p>Pulls out each condition, when it was first recorded, which side of the body, and who treated it.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="10" height="11" rx="1.5"/><rect x="5" y="18.5" width="10" height="11" rx="1.5"/><rect x="5" y="33" width="10" height="11" rx="1.5"/><path d="M16 9.500c7 0 5 14.500 12 14.500M16 24h12M16 38.500c7 0 5-14.500 12-14.500"/><rect class="ac" x="29" y="13" width="14" height="22" rx="2"/><path class="ac" d="M33 20h6M33 25h6M33 30h3"/></svg><span class="k">Group</span><h3>Groups records into injuries</h3><p>Fifteen notes about one shoulder become one shoulder injury, so nothing is counted twice or missed.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="30" rx="2"/><path d="M8 16h8M8 28h8M8 33h5"/><rect x="28" y="9" width="16" height="30" rx="2"/><path d="M32 16h8M32 21h8M32 33h5"/><rect class="hl" x="7" y="20" width="10" height="5" rx="1"/><rect class="hl" x="31" y="25" width="10" height="5" rx="1"/><path class="ac" d="M17 22.500h4c4 0 2 5 6 5h4"/><circle class="ac dot" cx="17" cy="22.500" r="1.800"/><circle class="ac dot" cx="31" cy="27.500" r="1.800"/></svg><span class="k">Match</span><h3>Matches to the right SOP</h3><p>Each condition is matched to its Statement of Principles, so the evidence is checked against the factors that actually apply.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="5" width="32" height="38" rx="3"/><path d="M13 14l3 3 5-6M26 14h9M13 24l3 3 5-6M26 24h9"/><rect class="ac" x="13.500" y="31" width="7" height="7" rx="1" stroke-dasharray="2.500 2.500"/><path class="ac" d="M26 34.500h9" stroke-dasharray="2.500 3"/></svg><span class="k">Check</span><h3>Shows evidence and gaps</h3><p>For every factor: the pages that support it, or a clear note that nothing on file does yet.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6h20a2 2 0 0 1 2 2v28"/><rect class="sh" x="9" y="11" width="26" height="32" rx="2"/><path d="M14.500 11v32M20 19h10M20 24h7"/><circle class="ac" cx="26" cy="34" r="4"/><path class="ac" d="M24.300 34l1.300 1.300 2.200-2.600"/></svg><span class="k">Build</span><h3>Builds the claim pack</h3><p>Pre-filled DVA forms and the cited pages in one PDF, ready for you and your advocate to check.</p></div>
     </div>
     <div class="caps more">
-      <div><span class="k">Watch</span><h3>Keeps watching as the SOPs change</h3><p>Statements of Principles are added and updated through the year. Each time they change, Evocatus checks the new and updated SOPs against the conditions already found in your records, and flags any that may affect you, with a link to the official SOP. If a change may give you grounds for a new claim, or more support for an existing one, you will know about it. <b>Email alerts are coming soon</b>, so you will not even need to log in to find out.</p></div>
-      <div><span class="k">Review</span><h3>Takes a second look at a rejected claim <span style="color:var(--gold)">(coming soon)</span></h3><p>If a claim was knocked back, Evocatus reads the decision against your records and the SOP that applies. It looks for evidence on file that was not used, and factors that may now be met, then sets out what could support a request for review, so you and your advocate can decide whether to ask the DVA to reconsider.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M39 24a15 15 0 1 1-4.400-10.600"/><path d="M39 7v7h-7"/><path class="ac" d="M24 16.500a5 5 0 0 1 5 5v4l2 3.500H17l2-3.500v-4a5 5 0 0 1 5-5z"/><path class="ac" d="M22.300 32.500a1.800 1.800 0 0 0 3.400 0"/></svg><span class="k">Watch</span><h3>Keeps watching as the SOPs change</h3><p>Statements of Principles are added and updated through the year. Each time they change, Evocatus checks the new and updated SOPs against the conditions already found in your records, and flags any that may affect you, with a link to the official SOP. If a change may give you grounds for a new claim, or more support for an existing one, you will know about it. <b>Email alerts are coming soon</b>, so you will not even need to log in to find out.</p></div>
+      <div><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h17l8 8v28H10z"/><path d="M27 6v8h8"/><path d="M15 17h9"/><path class="ac" d="M29 37h-8a6 6 0 0 1 0-12h9"/><path class="ac" d="M26.500 21l4 4-4 4"/></svg><span class="k">Review</span><h3>Takes a second look at a rejected claim <span style="color:var(--gold)">(coming soon)</span></h3><p>If a claim was knocked back, Evocatus reads the decision against your records and the SOP that applies. It looks for evidence on file that was not used, and factors that may now be met, then sets out what could support a request for review, so you and your advocate can decide whether to ask the DVA to reconsider.</p></div>
     </div>
   </div>
 </section>
@@ -479,10 +533,10 @@ footer .bottom a{color:var(--ink-soft)}
       <p>You stay in charge at every step. Evocatus does the reading and sorting; you and your advocate make the decisions.</p>
     </div>
     <ol class="steps">
-      <li><h3>Upload your records</h3><p>PDFs, scans and photos of your medical and service records, as they are.</p></li>
-      <li><h3>Evocatus reads every page</h3><p>Typed and handwritten notes are read and indexed, with conditions, dates, injuries and treating doctors pulled out.</p></li>
-      <li><h3>You check the matches</h3><p>See each condition's Statement of Principles, which factors have evidence, and which are gaps. Accept or reject what Evocatus found.</p></li>
-      <li><h3>Build and lodge</h3><p>Build the claim pack, review it with your advocate, then lodge it with the DVA yourselves.</p></li>
+      <li><svg class="pic" viewBox="0 0 120 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(-9 46 24)"><rect class="sh" x="35" y="8" width="22" height="30" rx="2"/><path d="M40 16h12M40 21h12M40 26h8"/></g><g transform="rotate(7 70 22)"><rect class="sh" x="59" y="5" width="22" height="30" rx="2"/><path class="ac" d="M64 13h12M64 18h12M64 23h8"/></g><path class="sh" d="M24 36h72v28H24z"/><path d="M24 36l-9-11M96 36l9-11"/><path d="M50 50h20"/></svg><h3>Upload your records</h3><p>PDFs, scans and photos of your medical and service records, as they are.</p></li>
+      <li><svg class="pic" viewBox="0 0 120 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="sh" x="46" y="9" width="44" height="56" rx="2"/><rect class="sh" x="38" y="5" width="44" height="56" rx="2"/><rect class="hl" x="43" y="27.500" width="34" height="7" rx="1"/><path d="M44 14h30M44 21h26M44 31h30M44 41h30M44 48h22"/><path class="ac" d="M30 31h8M82 31h8"/><circle class="ac" cx="24" cy="31" r="5"/><path class="ac" d="M20.500 34.500l-4 4"/></svg><h3>Evocatus reads every page</h3><p>Typed and handwritten notes are read and indexed, with conditions, dates, injuries and treating doctors pulled out.</p></li>
+      <li><svg class="pic" viewBox="0 0 120 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="sh" x="26" y="6" width="68" height="60" rx="3"/><path d="M35 19l4 4 7-8M54 19h30M35 35l4 4 7-8M54 35h30"/><rect class="ac" x="35" y="46" width="10" height="10" rx="1.500" stroke-dasharray="3 3"/><path class="ac" d="M54 51h30" stroke-dasharray="3 3.500"/></svg><h3>You check the matches</h3><p>See each condition's Statement of Principles, which factors have evidence, and which are gaps. Accept or reject what Evocatus found.</p></li>
+      <li><svg class="pic" viewBox="0 0 120 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 8h30a2 2 0 0 1 2 2v46"/><rect class="sh" x="14" y="13" width="36" height="50" rx="2"/><path d="M21 13v50M28 25h15M28 32h10"/><circle class="ac" cx="36" cy="49" r="6"/><path class="ac" d="M33.300 49l2 2 3.400-4"/><path class="ac" d="M62 38h14M71 32l6 6-6 6"/><rect class="sh" x="84" y="27" width="28" height="22" rx="2"/><path d="M84 29l14 11 14-11"/></svg><h3>Build and lodge</h3><p>Build the claim pack, review it with your advocate, then lodge it with the DVA yourselves.</p></li>
     </ol>
   </div>
 </section>
