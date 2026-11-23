@@ -215,6 +215,12 @@ footer a{margin-right:1rem}
 <td>Australia</td>
 </tr>
 <tr>
+<td>Amazon Web Services</td>
+<td>Storing encrypted nightly backups</td>
+<td>An encrypted copy of all Evocatus records and files, which AWS cannot read</td>
+<td>Australia (Sydney)</td>
+</tr>
+<tr>
 <td>Stripe</td>
 <td>Taking payments</td>
 <td>Your payment details, email, amount, what you bought. Not your records</td>
@@ -259,7 +265,7 @@ footer a{margin-right:1rem}
 <li>Nobody else. Each veteran's records are kept separate in the database, so one user's account cannot read another's.</li>
 </ul>
 <h2>9. Where your information is stored</h2>
-<p>Evocatus's database and your uploaded files are stored on a server we operate ourselves in Queensland, Australia. Backup copies are kept at the same place.</p>
+<p>Evocatus's database and your uploaded files are stored on a server we operate ourselves in Queensland, Australia. Each night an encrypted backup copy is also sent to Amazon Web Services storage in Sydney, Australia. It is locked with a key only we hold before it leaves our server, so AWS cannot read it.</p>
 <p>Website sign-up details are stored by Cloudflare and Resend (section 7). If where we store your records changes, we will update this policy and tell you before the change.</p>
 <h2>10. How we protect your information</h2>
 <p><strong>In place today</strong>
@@ -273,7 +279,7 @@ footer a{margin-right:1rem}
 - <strong>Monitoring.</strong> We are alerted when the service has an error.</p>
 <p><strong>Not yet in place. We would rather say so plainly.</strong>
 - No independent security test yet.
-- Records are not yet encrypted on disk, and backups are not yet kept off-site.
+- Records are not yet encrypted on disk on our own server. Off-site backups are encrypted.
 - Veterans and advocates do not yet have a second sign-in step inside Evocatus beyond their Google or Microsoft account. We recommend turning on two-step sign-in on that account.</p>
 <p>No system is perfectly secure.</p>
 <h2>11. Data breaches</h2>
