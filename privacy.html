@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy | Evocatus</title>
+<meta name="description" content="How Evocatus collects, uses, stores and protects veterans' personal and health information.">
+<link rel="canonical" href="https://www.evocatus.com.au/privacy">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>(function(){function ck(n){var m=document.cookie.match("(?:^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[1]):null}var d=document.documentElement,t=ck("dvb-theme");try{t=t||localStorage.getItem("dvb-theme")}catch(e){}if(t&&t!=="light")d.setAttribute("data-theme",t);if(ck("dvb-colours")==="1")d.classList.add("colours-picked")})()</script>
+<style>
+:root{
+  --paper:#f4f6f5;      /* page ground, slight green bias */
+  --sheet:#ffffff;      /* cards and the sample record */
+  --ink:#102f4c;        /* wordmark navy: headings and body text */
+  --ink-soft:#4a5d70;   /* secondary text */
+  --green:#1d432e;      /* wordmark green */
+  --gold:#b88f40;       /* wordmark gold: main buttons, the one warm accent */
+  --gold-soft:#f3e6c6;  /* highlighter on the sample record */
+  --rule:#d9e0e4;       /* hairlines */
+  --on-accent:#ffffff;  /* text on green buttons and badges */
+  --field:#b9c4cb;      /* form field borders */
+  --err:#9a2b1d;
+  --band:#102f4c;       /* the dark Support panel */
+  --band-ink:#ffffff;
+  --band-soft:#c9d5e1;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --typed:"Courier New",Courier,"Liberation Mono",monospace;  /* typed service-record entries */
+  --wrap:68rem;
+  color-scheme:light;
+}
+/* Themes: the same seven as the app (colours from app/static/style.css). Only colour tokens change. */
+:root[data-theme="defvetbridge"]{--paper:#0B1426;--sheet:#142236;--ink:#E2E8F0;--ink-soft:#94A3B8;--green:#14B8A6;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#223349;--on-accent:#0B1426;--field:#2E4560;--err:#f87171;--band:#0F2A3A;--band-ink:#E2E8F0;--band-soft:#A9B8CB;color-scheme:dark}
+:root[data-theme="dark"]{--paper:#13171F;--sheet:#181C25;--ink:#DFE3EB;--ink-soft:#9CA3AF;--green:#60A5FA;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#2A3140;--on-accent:#0B1220;--field:#3A4352;--err:#f87171;--band:#1E2633;--band-ink:#DFE3EB;--band-soft:#A7AFBC;color-scheme:dark}
+:root[data-theme="army"]{--paper:#1F2318;--sheet:#2B3020;--ink:#E8E4D8;--ink-soft:#A8A392;--green:#C9A227;--gold:#C9A227;--gold-soft:rgba(201,162,39,.2);--rule:#3D4530;--on-accent:#1F2318;--field:#4A5339;--err:#E06A5A;--band:#2B3020;--band-ink:#E8E4D8;--band-soft:#BDB8A6;color-scheme:dark}
+:root[data-theme="navy"]{--paper:#051233;--sheet:#0C1F4D;--ink:#E6ECF5;--ink-soft:#9AAAC4;--green:#D4AF37;--gold:#D4AF37;--gold-soft:rgba(212,175,55,.2);--rule:#1B2E5C;--on-accent:#051233;--field:#2A4170;--err:#f87171;--band:#0C1F4D;--band-ink:#E6ECF5;--band-soft:#AFBDD4;color-scheme:dark}
+:root[data-theme="airforce"]{--paper:#071A2E;--sheet:#0F2A47;--ink:#E4F1FB;--ink-soft:#8FB4D6;--green:#4FA8DA;--gold:#D4A94A;--gold-soft:rgba(79,168,218,.2);--rule:#1C3A5E;--on-accent:#071A2E;--field:#2A4C73;--err:#f87171;--band:#0F2A47;--band-ink:#E4F1FB;--band-soft:#A9C6E0;color-scheme:dark}
+:root[data-theme="colourblind"]{--paper:#FAFAFA;--sheet:#FFFFFF;--ink:#1A1A1A;--ink-soft:#595959;--green:#0072B2;--gold:#E69F00;--gold-soft:#FBE3B3;--rule:#C9C9C9;--on-accent:#FFFFFF;--field:#8C8C8C;--err:#D55E00;--band:#1A1A1A;--band-ink:#FFFFFF;--band-soft:#D9D9D9;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);padding-inline:max(16px,4vw)}
+a{color:var(--green)}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.doc{max-width:46rem;margin:0 auto;padding:1.5rem 0 4rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+.top img{height:44px;width:auto;display:block}
+.top nav a{margin-left:1rem;font-weight:600;text-decoration:none}
+h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:2.2rem 0 .6rem;line-height:1.25}
+h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
+p,li{max-width:44rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem;background:var(--sheet)}
+th,td{border:1px solid var(--rule);padding:.5rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--paper)}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.wrapt{overflow-x:auto}
+footer{border-top:1px solid var(--rule);margin-top:3rem;padding-top:1rem;font-size:.9rem;color:var(--ink-soft)}
+footer a{margin-right:1rem}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="top"><a href="/" aria-label="Evocatus home"><img src="Evocatus_logo_wide.png" alt="Evocatus"></a>
+<nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></header>
+<main>
+<h1>Evocatus Privacy Policy</h1>
+<p><strong>Pilot version, 23 November 2026.</strong> Evocatus is in a small invite-only pilot. This policy has not yet been reviewed by a solicitor. After review we will update it, and email you before any change to who receives your health information or where it goes.</p>
+<p><strong>Last updated:</strong> 23/11/2026</p>
+<h2>In short</h2>
+<ul>
+<li>Evocatus helps Australian veterans organise their own medical and service records and build a claim pack to lodge with DVA themselves.</li>
+<li>Your records are <strong>health information</strong>. We only collect them with your consent, and we handle them with extra care.</li>
+<li>We use <strong>artificial intelligence (AI)</strong> to read your documents and suggest matches. <strong>AI can be wrong. You decide everything.</strong></li>
+<li>The AI reading is done <strong>in Australia</strong>. Your records are <strong>not sent overseas</strong> to be read. We ask for your agreement before your first upload.</li>
+<li>The person who runs Evocatus (the administrator) <strong>can open your records</strong> to run, support and secure the service. An advocate can see them only if they are linked to your account.</li>
+<li>We <strong>never sell your information</strong>, never use it for advertising, and it is <strong>not used to train AI models</strong>.</li>
+<li>You can ask to see, correct or delete your information at any time: <strong>admin@evocatus.com.au</strong>.</li>
+<li>Evocatus is independent. It is not part of DVA or Defence, and it does not give legal, medical or financial advice.</li>
+</ul>
+<hr />
+<h2>1. Who we are</h2>
+<p>Evocatus ("we", "us") is a business name of Graham Charles Kissell, a sole trader in Brisbane, Queensland (ABN 38 805 236 305).</p>
+<p>Because we handle health information, we treat ourselves as bound by the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs), including the Notifiable Data Breaches scheme, whatever our size.</p>
+<p><strong>Privacy contact:</strong> admin@evocatus.com.au. Contact us for a postal address.</p>
+<h2>2. How you may deal with us</h2>
+<ol>
+<li><strong>The website</strong> (www.evocatus.com.au): registering your interest, or answering our survey. No account, no records.</li>
+<li><strong>Evocatus</strong> (app.evocatus.com.au): invite only. You must be 18 or over. Roles are veteran, advocate and administrator.</li>
+<li><strong>The Stress Test</strong> (stresstest.evocatus.com.au): checks a claim you upload. Same sign-in and same rules as Evocatus.</li>
+</ol>
+<p>Evocatus Professional (the version a law or advocacy firm runs on its own equipment) has its own privacy terms. These are given to the firm with its agreement.</p>
+<p>You can ask us general questions without giving your name. To use Evocatus we need to know who you are, because a DVA claim is made in your own name.</p>
+<h2>3. What we collect</h2>
+<p><strong>When you register interest or answer the survey</strong>
+- Name, email address, role (for example veteran or advocate), state, country, and any message or answers you choose to give.
+- Your tick-box agreement to receive updates.</p>
+<p>Please do not put medical or claim details in a message box.</p>
+<p><strong>If you are invited to use Evocatus, you give us</strong>
+- Account details: name, email address and role.
+- Identity details used on DVA forms: date of birth, service number, address, phone, DVA file number.
+- Service history: postings, dates, corps or branch, type of service.
+- <strong>Health information:</strong> medical records, conditions, medications, providers, and anything you upload or type in.
+- The documents you upload, kept exactly as you uploaded them.
+- Details of claims you record: dates, status, references DVA gave you.
+- Your decisions in Evocatus, such as accepting or rejecting a suggested match.</p>
+<p><strong>Created while you use Evocatus</strong>
+- Text read from your documents, including scanned and handwritten pages.
+- Suggested links between your conditions, your evidence and DVA's rules (Statements of Principles, or SOPs).
+- Claim packs and reports built from your records.
+- A record of changes, corrections and removals, and of account and access changes.
+- A record of AI use on your account and what it cost us.</p>
+<p><strong>Payments.</strong> Payments are taken by Stripe. We receive a record that you paid, the amount and what it was for. <strong>We never see or store your card number.</strong></p>
+<p><strong>Technical information.</strong> Our server keeps technical logs: your internet (IP) address, browser type, the pages requested, sign-in times and errors. Some of our logs include email addresses. Error alerts sent to the administrator name only the kind of page and error, never you or your records.</p>
+<p><strong>Information about other people.</strong> Your records may name other people (for example a doctor, a witness or a family member). Only upload records you are entitled to hold.</p>
+<p>We collect only what is reasonably necessary to provide the service (APP 3).</p>
+<h2>4. Health information and your consent</h2>
+<p>Health information is sensitive information under the Privacy Act. We collect it only with your consent (APP 3.3). Before your first upload we show you a short screen that says who will receive your records and where, and you tick to agree. We record that you agreed, when, and which version of the wording you saw.</p>
+<p>You can withdraw consent at any time by contacting us or deleting your account. If you withdraw, we cannot keep reading or storing your records, so Evocatus will stop working for you.</p>
+<p><strong>Advocates adding records for you.</strong> Where a linked advocate adds records for you, they must hold your written authority and confirm this in Evocatus. We record who confirmed it and when.</p>
+<h2>5. How we use your information</h2>
+<ul>
+<li>To store and read your records and pull out details such as conditions, dates and providers.</li>
+<li>To match your conditions and service against DVA's SOPs, and show which parts your evidence supports and where the gaps are.</li>
+<li>To build claim packs and reports for you to check, sign and lodge yourself.</li>
+<li>To check that a document belongs to you (for example, the surname and date of birth on it).</li>
+<li>To run your account, take payment, keep the service secure, fix problems and improve Evocatus.</li>
+<li>To email you about your account, and about Evocatus news if you agreed to that.</li>
+</ul>
+<p>We use or disclose your information for another purpose only where you consent, where it is directly related and you would reasonably expect it, or where Australian law requires it (APP 6).</p>
+<p><strong>What we do not do</strong>
+- We do not sell, rent or trade your information.
+- We do not use it for advertising, and we do not build advertising profiles.
+- We do not use your records to train AI models, and Amazon Web Services' published terms for the service we use say it does not either.
+- We do not send anything to DVA. Only you lodge your claim.
+- We do not take a share of any DVA payment.</p>
+<h2>6. AI processing</h2>
+<p>Evocatus uses AI to:
+- read your documents, including scanned and handwritten pages;
+- pick out conditions, dates, providers and similar details;
+- sort and label documents; and
+- suggest which DVA rule (SOP) a condition may fall under, and which pages may support it.</p>
+<p><strong>What AI does not do</strong>
+- It does not diagnose.
+- It does not predict whether a claim will succeed or what you might be paid.
+- It does not decide for you. A suggestion stays a suggestion until a person accepts it.
+- It does not lodge anything.</p>
+<p><strong>AI can make mistakes.</strong> It can misread a page, miss something, get a date wrong, or suggest a match that is not right. Every suggestion in Evocatus points to the page it came from so you can check it. You are responsible for checking what you lodge.</p>
+<h3>6.1 Where the AI reading happens</h3>
+<p>To do this work we use Anthropic's Claude AI models through <strong>Amazon Web Services (AWS)</strong>, set so that your information is processed <strong>in Australia only</strong>. Evocatus refuses to start, and refuses each request, if it is not set to an Australian route.</p>
+<ul>
+<li>Your records are <strong>not sent overseas</strong> to be read.</li>
+<li>AWS runs the service. The company that makes the AI model (Anthropic) does not receive your records.</li>
+<li>The Australian route keeps the reading in AWS's Sydney and Melbourne data centres.</li>
+<li>Your records are not used to train AI models. AWS's published terms say the service does not store or log what is sent to it.</li>
+<li>We can switch the AI reading off at any time. Evocatus then keeps working without it, in preview mode.</li>
+</ul>
+<p>Our other providers in section 7 handle limited information outside Australia. None of them receives your records, except Resend if you ask us to email you a Stress Test report (section 7).</p>
+<p>Nothing is sent to the AI service during the free preview.</p>
+<h3>6.2 Decisions made with the help of computer programs</h3>
+<p>From 10 December 2026 the Privacy Act requires a privacy policy to describe certain decisions made, or substantially helped, by computer programs (APP 1.7 to 1.9). We describe ours here whether or not the law strictly requires it.</p>
+<p><strong>No decision about your claim is made by a computer alone.</strong> DVA decides your claim, and you decide what to lodge.</p>
+<p>Computer programs in Evocatus do these things, which you or your advocate then act on:</p>
+<div class="wrapt"><table>
+<thead>
+<tr>
+<th>What the program does</th>
+<th>Personal information it uses</th>
+<th>Who decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suggests which DVA rule (SOP) a condition falls under, and how confident it is</td>
+<td>Your medical and service records</td>
+<td>You or your advocate accept or reject it</td>
+</tr>
+<tr>
+<td>Finds pages that may support a claim, and rates them</td>
+<td>Your medical and service records</td>
+<td>You or your advocate choose what goes in the pack</td>
+</tr>
+<tr>
+<td>Holds a document that seems to belong to someone else</td>
+<td>The name and date of birth on the document and on your account</td>
+<td>You confirm "it's mine" or remove it</td>
+</tr>
+<tr>
+<td>Shows you a free preview using a word search, with no AI</td>
+<td>The text of your records</td>
+<td>You choose whether to go further</td>
+</tr>
+<tr>
+<td>Pauses reading when an account reaches its AI cost limit</td>
+<td>A record of AI use on your account</td>
+<td>The administrator can lift the pause</td>
+</tr>
+</tbody>
+</table></div>
+<p>If you think a suggestion is wrong, you can reject it, or contact us and a person will look at it.</p>
+<h2>7. Who else handles your information</h2>
+<div class="wrapt"><table>
+<thead>
+<tr>
+<th>Who</th>
+<th>What for</th>
+<th>What they receive</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Web Services</td>
+<td>Reading documents and suggesting matches (section 6)</td>
+<td>Document text and images, related details</td>
+<td>Australia</td>
+</tr>
+<tr>
+<td>Amazon Web Services</td>
+<td>Storing encrypted nightly backups</td>
+<td>An encrypted copy of all Evocatus records and files, which AWS cannot read</td>
+<td>Australia (Sydney)</td>
+</tr>
+<tr>
+<td>Stripe</td>
+<td>Taking payments</td>
+<td>Your payment details, email, amount, what you bought. Not your records</td>
+<td>Australia and overseas, including the United States</td>
+</tr>
+<tr>
+<td>Resend</td>
+<td>Sending emails (invitations, account notices, updates, and a Stress Test report <strong>if you ask us to email it</strong>)</td>
+<td>Your email address and the content of the email</td>
+<td>United States</td>
+</tr>
+<tr>
+<td>Google or Microsoft</td>
+<td>Signing in</td>
+<td>They confirm who you are and give us your verified email address and name. They do not receive your records</td>
+<td>Their own systems</td>
+</tr>
+<tr>
+<td>Cloudflare</td>
+<td>Hosting our website and the register-interest form; internet address services</td>
+<td>What you type into the website form</td>
+<td>A US company; may process it outside Australia</td>
+</tr>
+<tr>
+<td>Tally</td>
+<td>Our survey</td>
+<td>Your survey answers</td>
+<td>A Belgian company; stored in Europe</td>
+</tr>
+</tbody>
+</table></div>
+<p>We also share information:
+- <strong>With an advocate linked to your account</strong> (section 8).
+- <strong>With DVA or anyone else only when you do it yourself</strong>, by lodging or sending your pack. Evocatus has no connection to DVA systems.
+- <strong>With authorities</strong>, if Australian law or a court or tribunal order requires it.</p>
+<p><strong>Emailed Stress Test reports.</strong> If you ask us to email a report, it contains health information and travels by ordinary email to the address you type. Check the address.</p>
+<h2>8. Who can see your records</h2>
+<ul>
+<li><strong>You.</strong></li>
+<li><strong>An advocate linked to your account.</strong> Today the administrator creates the link after you ask for it. You can ask us at any time who is linked, and to end a link. Ended links are recorded.</li>
+<li><strong>The administrator.</strong> The person who runs Evocatus can open any record. This is used only to run, support and secure the service, to fix a problem you report, or to meet a legal obligation. We do not yet keep a log of each time a record is opened. We are building one.</li>
+<li>Nobody else. Each veteran's records are kept separate in the database, so one user's account cannot read another's.</li>
+</ul>
+<h2>9. Where your information is stored</h2>
+<p>Evocatus's database and your uploaded files are stored on a server we operate ourselves in Queensland, Australia. Each night an encrypted backup copy is also sent to Amazon Web Services storage in Sydney, Australia. It is locked with a key only we hold before it leaves our server, so AWS cannot read it.</p>
+<p>Website sign-up details are stored by Cloudflare and Resend (section 7). If where we store your records changes, we will update this policy and tell you before the change.</p>
+<h2>10. How we protect your information</h2>
+<p><strong>In place today</strong>
+- <strong>Invite only.</strong> Nobody can sign themselves up.
+- <strong>No Evocatus password.</strong> You sign in with your own Google or Microsoft account.
+- <strong>Encrypted connections.</strong> Traffic between your browser and Evocatus uses HTTPS.
+- <strong>Separation between users</strong> inside the database, tested on every update.
+- <strong>The administrator area</strong> needs a second sign-in step.
+- <strong>A record of changes.</strong> Account changes, corrections and removals are logged. Uploaded originals are kept unaltered. Nothing is removed without a record.
+- <strong>Safer updates.</strong> A backup is taken before each database change, and every update must pass our automated tests first.
+- <strong>Monitoring.</strong> We are alerted when the service has an error.</p>
+<p><strong>Not yet in place. We would rather say so plainly.</strong>
+- No independent security test yet.
+- Records are not yet encrypted on disk on our own server. Off-site backups are encrypted.
+- Veterans and advocates do not yet have a second sign-in step inside Evocatus beyond their Google or Microsoft account. We recommend turning on two-step sign-in on that account.</p>
+<p>No system is perfectly secure.</p>
+<h2>11. Data breaches</h2>
+<p>If we find, or suspect, that your information has been accessed, lost or disclosed without authority, we will act quickly to contain it and assess it within 30 days at most. If serious harm to you is likely, we will tell you and the Office of the Australian Information Commissioner (OAIC) as soon as we can, as the Notifiable Data Breaches scheme requires. We have a written response plan.</p>
+<h2>12. Your rights</h2>
+<p>You can ask to:
+- see the personal information we hold about you (APP 12);
+- correct it if it is inaccurate, out of date, incomplete or misleading (APP 13);
+- have a copy of your records;
+- know who has been linked to your account; and
+- delete your account, or unsubscribe from updates.</p>
+<p>Contact admin@evocatus.com.au. We will reply within 30 days. We do not charge for a request. If we refuse, we will tell you why in writing and how to complain.</p>
+<p><strong>Deleting your account.</strong> There is a 30 day grace period so nothing is lost by accident. After that, your records, uploaded files, claim packs and the change history for your account are removed. We keep a minimal record that the deletion happened. Backup copies age out within 35 days. Payment records are kept for 5 years (section 13).</p>
+<h2>13. How long we keep information</h2>
+<ul>
+<li><strong>Website sign-up and survey details:</strong> until you unsubscribe or ask us to remove them.</li>
+<li><strong>Account and records:</strong> while your account is active, then removed after the 30 day grace period.</li>
+<li><strong>Removed documents.</strong> When a document is removed from your account, a copy of what was removed stays in your account's change history until your account is deleted.</li>
+<li><strong>Information sent to the AI service:</strong> not kept by AWS after the answer is returned (AWS's published terms).</li>
+<li><strong>Payment records:</strong> 5 years.</li>
+<li><strong>Server and application logs:</strong> up to 90 days.</li>
+<li><strong>Backups:</strong> up to 35 days.</li>
+</ul>
+<p>When we no longer need information we destroy or de-identify it (APP 11.2).</p>
+<h2>14. Emails and unsubscribing</h2>
+<p>We email you news about Evocatus only if you agreed. Every such email has a working unsubscribe link. We send account emails (such as invitations and receipts) because they are part of the service. This follows the <em>Spam Act 2003</em> (Cth).</p>
+<h2>15. Cookies</h2>
+<p>When you are signed in we use one session cookie to keep you signed in and secure. We do not use advertising cookies or trackers. The public website remembers your colour choice in your browser, and loads no analytics. Our survey is on Tally's own site.</p>
+<h2>16. Complaints</h2>
+<p>Email admin@evocatus.com.au with a privacy complaint. We will acknowledge it within 5 business days and aim to resolve it within 30 days. If you are not satisfied, you can complain to the OAIC at www.oaic.gov.au or on 1300 363 992.</p>
+<h2>17. Children</h2>
+<p>Evocatus is for adults (18 and over). We do not knowingly collect information from anyone under 18.</p>
+<h2>18. Changes to this policy</h2>
+<p>If we make a material change, particularly to who receives your health information or where it goes, we will email you before it takes effect and ask for your agreement again where the law requires it.</p>
+</main>
+<footer><a href="/">Evocatus home</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:admin@evocatus.com.au">admin@evocatus.com.au</a>
+<p>Evocatus is a business name of Graham Charles Kissell, sole trader, ABN 38 805 236 305, Brisbane, Queensland. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></footer>
+</div>
+</body>
+</html>

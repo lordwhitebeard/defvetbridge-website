@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terms of Service | Evocatus</title>
+<meta name="description" content="The terms for using Evocatus, including the Pilot Terms.">
+<link rel="canonical" href="https://www.evocatus.com.au/terms">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>(function(){function ck(n){var m=document.cookie.match("(?:^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[1]):null}var d=document.documentElement,t=ck("dvb-theme");try{t=t||localStorage.getItem("dvb-theme")}catch(e){}if(t&&t!=="light")d.setAttribute("data-theme",t);if(ck("dvb-colours")==="1")d.classList.add("colours-picked")})()</script>
+<style>
+:root{
+  --paper:#f4f6f5;      /* page ground, slight green bias */
+  --sheet:#ffffff;      /* cards and the sample record */
+  --ink:#102f4c;        /* wordmark navy: headings and body text */
+  --ink-soft:#4a5d70;   /* secondary text */
+  --green:#1d432e;      /* wordmark green */
+  --gold:#b88f40;       /* wordmark gold: main buttons, the one warm accent */
+  --gold-soft:#f3e6c6;  /* highlighter on the sample record */
+  --rule:#d9e0e4;       /* hairlines */
+  --on-accent:#ffffff;  /* text on green buttons and badges */
+  --field:#b9c4cb;      /* form field borders */
+  --err:#9a2b1d;
+  --band:#102f4c;       /* the dark Support panel */
+  --band-ink:#ffffff;
+  --band-soft:#c9d5e1;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --typed:"Courier New",Courier,"Liberation Mono",monospace;  /* typed service-record entries */
+  --wrap:68rem;
+  color-scheme:light;
+}
+/* Themes: the same seven as the app (colours from app/static/style.css). Only colour tokens change. */
+:root[data-theme="defvetbridge"]{--paper:#0B1426;--sheet:#142236;--ink:#E2E8F0;--ink-soft:#94A3B8;--green:#14B8A6;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#223349;--on-accent:#0B1426;--field:#2E4560;--err:#f87171;--band:#0F2A3A;--band-ink:#E2E8F0;--band-soft:#A9B8CB;color-scheme:dark}
+:root[data-theme="dark"]{--paper:#13171F;--sheet:#181C25;--ink:#DFE3EB;--ink-soft:#9CA3AF;--green:#60A5FA;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#2A3140;--on-accent:#0B1220;--field:#3A4352;--err:#f87171;--band:#1E2633;--band-ink:#DFE3EB;--band-soft:#A7AFBC;color-scheme:dark}
+:root[data-theme="army"]{--paper:#1F2318;--sheet:#2B3020;--ink:#E8E4D8;--ink-soft:#A8A392;--green:#C9A227;--gold:#C9A227;--gold-soft:rgba(201,162,39,.2);--rule:#3D4530;--on-accent:#1F2318;--field:#4A5339;--err:#E06A5A;--band:#2B3020;--band-ink:#E8E4D8;--band-soft:#BDB8A6;color-scheme:dark}
+:root[data-theme="navy"]{--paper:#051233;--sheet:#0C1F4D;--ink:#E6ECF5;--ink-soft:#9AAAC4;--green:#D4AF37;--gold:#D4AF37;--gold-soft:rgba(212,175,55,.2);--rule:#1B2E5C;--on-accent:#051233;--field:#2A4170;--err:#f87171;--band:#0C1F4D;--band-ink:#E6ECF5;--band-soft:#AFBDD4;color-scheme:dark}
+:root[data-theme="airforce"]{--paper:#071A2E;--sheet:#0F2A47;--ink:#E4F1FB;--ink-soft:#8FB4D6;--green:#4FA8DA;--gold:#D4A94A;--gold-soft:rgba(79,168,218,.2);--rule:#1C3A5E;--on-accent:#071A2E;--field:#2A4C73;--err:#f87171;--band:#0F2A47;--band-ink:#E4F1FB;--band-soft:#A9C6E0;color-scheme:dark}
+:root[data-theme="colourblind"]{--paper:#FAFAFA;--sheet:#FFFFFF;--ink:#1A1A1A;--ink-soft:#595959;--green:#0072B2;--gold:#E69F00;--gold-soft:#FBE3B3;--rule:#C9C9C9;--on-accent:#FFFFFF;--field:#8C8C8C;--err:#D55E00;--band:#1A1A1A;--band-ink:#FFFFFF;--band-soft:#D9D9D9;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);padding-inline:max(16px,4vw)}
+a{color:var(--green)}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.doc{max-width:46rem;margin:0 auto;padding:1.5rem 0 4rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+.top img{height:44px;width:auto;display:block}
+.top nav a{margin-left:1rem;font-weight:600;text-decoration:none}
+h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:2.2rem 0 .6rem;line-height:1.25}
+h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
+p,li{max-width:44rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem;background:var(--sheet)}
+th,td{border:1px solid var(--rule);padding:.5rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--paper)}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.wrapt{overflow-x:auto}
+footer{border-top:1px solid var(--rule);margin-top:3rem;padding-top:1rem;font-size:.9rem;color:var(--ink-soft)}
+footer a{margin-right:1rem}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="top"><a href="/" aria-label="Evocatus home"><img src="Evocatus_logo_wide.png" alt="Evocatus"></a>
+<nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></header>
+<main>
+<h1>Evocatus Terms of Service</h1>
+<p><strong>Pilot version, 23 November 2026.</strong> Evocatus is in a small invite-only pilot. These terms have not yet been reviewed by a solicitor. After review we will update them and email you at least 30 days before any material change.</p>
+<p><strong>Scope.</strong> These terms cover the online Evocatus service (app.evocatus.com.au and the Stress Test). Evocatus Professional, which a firm runs on its own equipment, has its own agreement.</p>
+<p><strong>Last updated:</strong> 23/11/2026</p>
+<h2>The short version</h2>
+<ul>
+<li>Evocatus organises <strong>your own records</strong> and shows how they line up with DVA's rules. It builds a claim pack. <strong>You check it, sign it and lodge it.</strong></li>
+<li>Evocatus is <strong>not DVA</strong>, not an advocate, not a lawyer and not a doctor. It gives no advice and promises no outcome.</li>
+<li>It uses AI. <strong>AI can be wrong.</strong> Check everything against the page it points to.</li>
+<li>Your records stay yours.</li>
+<li>You have rights under the Australian Consumer Law that nothing here takes away.</li>
+</ul>
+<hr />
+<h2>1. Who these terms are between</h2>
+<p>1.1 "Evocatus", "we" and "us" mean Graham Charles Kissell, a sole trader trading as Evocatus (ABN 38 805 236 305), Brisbane, Queensland. Contact: admin@evocatus.com.au.</p>
+<p>1.2 "You" means the person using Evocatus: a veteran, an advocate, or another person we have invited.</p>
+<p>1.3 You accept these terms when you first sign in after being invited, by ticking the box we show you. We record that you accepted, when, and which version. If you do not accept them, do not use Evocatus.</p>
+<p>1.4 Our Privacy Policy explains how we handle your information. It forms part of these terms.</p>
+<h2>2. What Evocatus is, and is not</h2>
+<p>2.1 <strong>What it is.</strong> A tool that stores and reads your records, matches your conditions and service against DVA's Statements of Principles (SOPs), shows which parts your evidence supports and where the gaps are, and builds a claim pack for you to lodge.</p>
+<p>2.2 <strong>Not government.</strong> Evocatus is independent. It is not part of, endorsed by, or connected to the Department of Veterans' Affairs (DVA), the Repatriation Medical Authority, the Repatriation Commission, the Military Rehabilitation and Compensation Commission, the Australian Defence Force or the Commonwealth.</p>
+<p>2.3 <strong>Not advice.</strong> Evocatus does not give legal, medical, financial or advocacy advice. It is not a registered advocate, agent or representative. If you want advice, talk to an accredited advocate, an ex-service organisation, a lawyer or your doctor.</p>
+<p>2.4 <strong>Not a medical device.</strong> Evocatus does not diagnose, treat or assess any condition. When it says evidence is strong or weak, it means how well a page matches the words of a DVA rule. It is not a medical opinion.</p>
+<p>2.5 <strong>No prediction and no guarantee.</strong> Evocatus does not predict whether DVA will accept a claim, how long it will take, or what you may be paid. DVA decides every claim.</p>
+<p>2.6 <strong>You lodge.</strong> Evocatus never lodges anything and has no connection to DVA's systems. You are responsible for what you lodge.</p>
+<p>2.7 <strong>Forms.</strong> Evocatus fills in the parts of DVA forms that come from your records. It does not complete the parts only a doctor may complete.</p>
+<p>2.8 <strong>The rules.</strong> SOPs shown in Evocatus are a research aid, current to the date shown. The authoritative text is on the Federal Register of Legislation (www.legislation.gov.au). Which Act applies to you can depend on your service and on the date you lodge.</p>
+<h2>3. Accounts and who can use Evocatus</h2>
+<p>3.1 Evocatus is invite only. You must be 18 or over, and be a veteran, a person with the veteran's authority, or an advocate.</p>
+<p>3.2 You sign in with your own Google or Microsoft account. Keep that account secure and turn on its two-step sign-in. Do not share your sign-in.</p>
+<p>3.3 Tell us straight away if you think someone else has used your account.</p>
+<p>3.4 Roles are veteran, advocate and administrator. Changes to accounts and roles are logged.</p>
+<h2>4. Advocates and people acting for a veteran</h2>
+<p>4.1 An advocate can see a veteran's records only while linked to that veteran's account. Today links are created by the administrator at the veteran's request. Links, and the ending of links, are recorded.</p>
+<p>4.2 If you are an advocate, you promise that:
+- (a) you hold the veteran's informed consent, and written authority where you add or upload records for them;
+- (b) you will use Evocatus only for veterans linked to you;
+- (c) you will handle their information lawfully, including under the <em>Privacy Act 1988</em> (Cth) and any health records law that applies to you; and
+- (d) you hold any accreditation or practising certificate your role requires.</p>
+<p>4.3 If you act for a veteran as a family member, carer or attorney, you must hold valid authority and the veteran's consent to handle their health information.</p>
+<p>4.4 Evocatus does not check an advocate's authority or accreditation beyond what is recorded in the system.</p>
+<p>4.5 A firm or business that wants to use Evocatus for its clients needs a separate agreement with us.</p>
+<h2>5. What you agree to do</h2>
+<p>5.1 Give true information.</p>
+<p>5.2 Upload only your own records, or records you are authorised to handle. Uploading another person's medical records without authority may breach the Privacy Act.</p>
+<p>5.3 Check every AI suggestion, and the finished claim pack, against the source pages <strong>before</strong> you give anything to DVA, a doctor, an advocate, a lawyer or a tribunal.</p>
+<p>5.4 Do not:
+- (a) make or support a claim you know to be false;
+- (b) try to see another person's records;
+- (c) upload malicious files, or interfere with or test the security of the service without our written agreement;
+- (d) copy, resell or reverse engineer Evocatus, or use it to build a competing product; or
+- (e) use it for anything unlawful.</p>
+<h2>6. AI in Evocatus</h2>
+<p>6.1 Evocatus uses AI to read documents, pick out details and suggest matches. AI can misread a page, miss something, get a date or a side of the body wrong, or state something that is not in the record.</p>
+<p>6.2 AI suggestions are suggestions only. Nothing is treated as accepted until a person accepts it.</p>
+<p>6.3 Every suggestion points to the document and page it came from, so you can check it. The claim pack is built from your stored records and the pages they cite.</p>
+<p>6.4 Where the AI reading happens, who provides it, and what they keep, is set out in our Privacy Policy. Today the reading is done in Australia.</p>
+<p>6.5 If Evocatus cannot read or classify a document, it keeps the document and tells you. It does not silently drop it. You should still check that everything you uploaded is there.</p>
+<h2>7. Prices and payment</h2>
+<p>7.1 <strong>Prices.</strong> The price of anything you can pay for is shown in Australian dollars before you pay. During the pilot no real payments are taken: testers use the codes we give them (see the Pilot Terms below).</p>
+<p>7.2 <strong>GST.</strong> Evocatus is not registered for GST, so GST is not charged. If that changes, prices shown will include GST.</p>
+<p>7.3 <strong>What a payment covers.</strong> What you get for each payment (for example, how many times a pack can be rebuilt) is shown at the point of payment.</p>
+<p>7.4 <strong>Payment</strong> is taken by Stripe. We do not see or store your card number.</p>
+<p>7.5 <strong>Discount codes</strong> are single use, cannot be exchanged for cash, and expire on the date given with the code.</p>
+<p>7.6 <strong>Refunds.</strong> If something we charged for does not work as described, tell us and we will fix it or refund you. Your rights under the Australian Consumer Law (section 11) always apply. We do not refund because DVA did not accept a claim, since no outcome is promised.</p>
+<p>7.7 <strong>No share of your claim.</strong> We never take a percentage of any DVA payment.</p>
+<p>7.8 <strong>Price changes.</strong> We may change prices for future purchases. A change never affects something you have already paid for.</p>
+<p>7.9 <strong>Pilot.</strong> If you are in a pilot, the Pilot Terms below also apply.</p>
+<h2>8. Your records and your privacy</h2>
+<p>8.1 <strong>Your records stay yours.</strong> We claim no ownership of your documents, your information or your claim packs.</p>
+<p>8.2 <strong>Our permission to use them.</strong> You give us permission to store, read, copy and process your records only to provide Evocatus to you, to keep it secure, and to meet our legal obligations. This permission ends when your account is deleted, except for backups that age out as the Privacy Policy describes.</p>
+<p>8.3 <strong>We keep originals unaltered.</strong> Corrections and removals are logged.</p>
+<p>8.4 <strong>Copies and deletion.</strong> You can ask for a copy of your records, and you can delete your account. Deletion has a 30 day grace period. After that your records are removed as the Privacy Policy describes.</p>
+<p>8.5 <strong>Backups.</strong> We back up the service, but you should keep your own originals. Evocatus is not a records archive.</p>
+<p>8.6 <strong>Data breaches.</strong> We follow the Notifiable Data Breaches scheme, as set out in the Privacy Policy.</p>
+<h2>9. Who owns what</h2>
+<p>9.1 We own Evocatus: the software, the design, the name and logo, and the way we have organised and linked SOP material.</p>
+<p>9.2 We give you a personal, non-transferable permission to use Evocatus for your own claim, or for the veterans linked to you, while your account is active.</p>
+<p>9.3 SOPs and other Commonwealth material remain the Commonwealth's. Where we reproduce it, we do so under its Creative Commons Attribution 4.0 licence, with attribution. The Commonwealth does not endorse Evocatus.</p>
+<p>9.4 If you send us feedback, we may use it to improve Evocatus without owing you anything.</p>
+<h2>10. Availability and changes</h2>
+<p>10.1 Evocatus is a new service run by one person. We aim to keep it available but do not promise it always will be. There may be outages and maintenance.</p>
+<p>10.2 We may change or remove features. If a change would remove something you have paid for and not yet received, we will provide it or refund you.</p>
+<p>10.3 If we ever close Evocatus, we will give you at least 60 days' notice by email so you can download your claim packs and records.</p>
+<h2>11. Our responsibility to you</h2>
+<p>11.1 <strong>Australian Consumer Law.</strong> Our services come with guarantees that cannot be excluded under the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)). Nothing in these terms excludes, restricts or changes those guarantees or any other right you have that cannot lawfully be excluded.</p>
+<p>11.2 <strong>What we are not responsible for.</strong> Subject to 11.1, we are not responsible for:
+- (a) any decision by DVA or any other body;
+- (b) loss caused by information you gave us that was wrong or incomplete;
+- (c) loss caused by relying on an AI suggestion that you did not check against the source page; or
+- (d) events outside our reasonable control.</p>
+<p>11.3 <strong>Limit.</strong> Subject to 11.1, and to the extent the law allows, our total liability to you for all claims is limited to the greater of the amount you paid us in the 12 months before the claim arose and A$100. We are not liable for indirect or consequential loss.</p>
+<p>11.4 <strong>Your responsibility.</strong> If you are an advocate, or you use Evocatus to help another person, you are responsible for loss we suffer because you acted without that person's authority or broke clause 4 or 5, except to the extent we caused it.</p>
+<h2>12. Ending your use</h2>
+<p>12.1 You can stop using Evocatus and delete your account at any time.</p>
+<p>12.2 We may suspend an account straight away if we reasonably believe it is being used unlawfully, to access another person's records, or in a way that puts the service or other users at risk. We will tell you why.</p>
+<p>12.3 Otherwise we may end your access on 30 days' notice by email.</p>
+<p>12.4 When your access ends you can ask for a copy of your records within 30 days. If we end your access under 12.3, we will refund anything you paid for and have not received.</p>
+<p>12.5 Clauses 2, 5.3, 8.1, 9, 11, 13 and 14 continue after your access ends.</p>
+<h2>13. Complaints and disputes</h2>
+<p>13.1 Email admin@evocatus.com.au. We will acknowledge a complaint within 5 business days and aim to resolve it within 30 days.</p>
+<p>13.2 If we cannot resolve it, either of us may propose mediation before going to a court or tribunal, with a mediator we both agree on.</p>
+<p>13.3 Nothing here stops you going to the Office of the Australian Information Commissioner (privacy), the Australian Competition and Consumer Commission or the Queensland Office of Fair Trading (consumer rights), or the Queensland Civil and Administrative Tribunal.</p>
+<h2>14. General</h2>
+<p>14.1 <strong>Changes to these terms.</strong> We will email you at least 30 days before a material change takes effect. If you do not agree, you can delete your account, and we will refund anything paid for and not received.</p>
+<p>14.2 <strong>Law.</strong> These terms are governed by the law of Queensland, Australia. The courts of Queensland have non-exclusive jurisdiction.</p>
+<p>14.3 <strong>If part is invalid.</strong> If any part of these terms cannot be enforced, the rest still applies.</p>
+<p>14.4 <strong>Whole agreement.</strong> These terms, the Privacy Policy and any Pilot Terms are the whole agreement between us about Evocatus. Statements on our website are meant to match them. If they differ, tell us and we will fix it.</p>
+<p>14.5 <strong>Notices.</strong> We will contact you at the email address on your account. Contact us at admin@evocatus.com.au.</p>
+<hr />
+<h2 id="pilot">Pilot Terms</h2>
+
+<p>These sit on top of these Terms and the Privacy Policy. Where they differ, the Pilot Terms apply during the pilot.</p>
+<p><strong>Thank you for helping test Evocatus.</strong> Here is the deal, in plain words.</p>
+<p><strong>1. It is free.</strong>
+You get codes for one full claim pack at no cost: one takes 100% off the claim pack and one takes A$100 off AI reading. You never have to pay anything to take part. Codes are single use and expire on 10/12/2026 at 11:59 pm (Brisbane time).</p>
+<p><strong>2. It is a test.</strong>
+Evocatus is new and run by one person. Things may break, be slow, or change while you use it. There may be short outages.</p>
+<p><strong>3. What we are testing.</strong>
+Whether a veteran can go from uploading records to a finished claim pack without help, and how good the pack is.</p>
+<p><strong>4. What we ask of you.</strong>
+- Use your own records.
+- Tell us what was confusing, wrong or broken: admin@evocatus.com.au, or through our <a href="https://tally.so/r/BEEYdR">tester survey</a>. We aim to reply within 2 business days.
+- Check your claim pack against your own records before you lodge it. AI can be wrong.</p>
+<p><strong>5. Your records.</strong>
+- They are handled as the Privacy Policy says. You agree to that before you upload.
+- We may look at your account to fix a problem you report, or to see where the system went wrong.
+- We will not use your name, your records or your story in public without asking you first.
+- What we learn is used to improve Evocatus, as general lessons, not your details.</p>
+<p><strong>6. Lodging is your choice.</strong>
+You do not have to lodge anything. If you do, you lodge it yourself, and DVA decides. We promise no result.</p>
+<p><strong>7. Leaving, and the end of the pilot.</strong>
+- You can leave at any time and delete your account. Your records are removed after a 30 day grace period.
+- The pilot runs until 28/02/2027. After that your account stays open and your claim pack stays yours. We will tell you any prices well before the pilot ends, and nothing is ever charged unless you choose to pay.
+- If we ever close Evocatus, we will give you at least 60 days' notice so you can download everything.</p>
+<p><strong>8. You need</strong> your own Google or Microsoft account to sign in. Please turn on its two-step sign-in.</p>
+</main>
+<footer><a href="/">Evocatus home</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:admin@evocatus.com.au">admin@evocatus.com.au</a>
+<p>Evocatus is a business name of Graham Charles Kissell, sole trader, ABN 38 805 236 305, Brisbane, Queensland. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></footer>
+</div>
+</body>
+</html>
