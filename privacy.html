@@ -64,14 +64,14 @@ footer a{margin-right:1rem}
 <nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></header>
 <main>
 <h1>Evocatus Privacy Policy</h1>
-<p><strong>Pilot version, 23 November 2026.</strong> Evocatus is in a small invite-only pilot. This policy has not yet been reviewed by a solicitor. After review we will update it, and email you before any change to who receives your health information or where it goes.</p>
-<p><strong>Last updated:</strong> 23/11/2026</p>
+<p><strong>Pilot version, 24 November 2026.</strong> Evocatus is in a small invite-only pilot. This policy has not yet been reviewed by a solicitor. After review we will update it, and email you before any change to who receives your health information or where it goes.</p>
+<p><strong>Last updated:</strong> 24/11/2026</p>
 <h2>In short</h2>
 <ul>
 <li>Evocatus helps Australian veterans organise their own medical and service records and build a claim pack to lodge with DVA themselves.</li>
 <li>Your records are <strong>health information</strong>. We only collect them with your consent, and we handle them with extra care.</li>
 <li>We use <strong>artificial intelligence (AI)</strong> to read your documents and suggest matches. <strong>AI can be wrong. You decide everything.</strong></li>
-<li>The AI reading is done <strong>in Australia</strong>. Your records are <strong>not sent overseas</strong> to be read. We ask for your agreement before your first upload.</li>
+<li>The AI reading is done <strong>in Australia</strong>. Your records are <strong>not sent overseas</strong> to be read, and your name and identifying details are <strong>removed</strong> before the AI reads them, wherever we can. We ask for your agreement before your first upload.</li>
 <li>The person who runs Evocatus (the administrator) <strong>can open your records</strong> to run, support and secure the service. An advocate can see them only if they are linked to your account.</li>
 <li>We <strong>never sell your information</strong>, never use it for advertising, and it is <strong>not used to train AI models</strong>.</li>
 <li>You can ask to see, correct or delete your information at any time: <strong>admin@evocatus.com.au</strong>.</li>
@@ -153,6 +153,8 @@ footer a{margin-right:1rem}
 <li>The Australian route keeps the reading in AWS's Sydney and Melbourne data centres.</li>
 <li>Your records are not used to train AI models. AWS's published terms say the service does not store or log what is sent to it.</li>
 <li>We can switch the AI reading off at any time. Evocatus then keeps working without it, in preview mode.</li>
+<li><strong>Your name and identifying details are removed first.</strong> Before a page goes to the AI service, Evocatus takes off your name, date of birth, service and DVA file numbers, address, phone and email (and your next of kin's), replacing them with a label such as [VETERAN NAME] or covering them with a black box on the page. The AI service reads your medical text without your name on it.</li>
+<li><strong>Where we cannot remove them yet:</strong> handwriting, photos, and scanned pages we cannot yet read as text are sent as they are. When Evocatus fills in your service history and personal details from your documents, it reads those details for that purpose. We keep a record each time either happens (never the details themselves). Pages read before 24 November 2026 were sent with these details on them.</li>
 </ul>
 <p>Our other providers in section 7 handle limited information outside Australia. None of them receives your records, except Resend if you ask us to email you a Stress Test report (section 7).</p>
 <p>Nothing is sent to the AI service during the free preview.</p>
@@ -268,19 +270,25 @@ footer a{margin-right:1rem}
 <p>Evocatus's database and your uploaded files are stored on a server we operate ourselves in Queensland, Australia. Each night an encrypted backup copy is also sent to Amazon Web Services storage in Sydney, Australia. It is locked with a key only we hold before it leaves our server, so AWS cannot read it.</p>
 <p>Website sign-up details are stored by Cloudflare and Resend (section 7). If where we store your records changes, we will update this policy and tell you before the change.</p>
 <h2>10. How we protect your information</h2>
-<p><strong>In place today</strong>
-- <strong>Invite only.</strong> Nobody can sign themselves up.
-- <strong>No Evocatus password.</strong> You sign in with your own Google or Microsoft account.
-- <strong>Encrypted connections.</strong> Traffic between your browser and Evocatus uses HTTPS.
-- <strong>Separation between users</strong> inside the database, tested on every update.
-- <strong>The administrator area</strong> needs a second sign-in step.
-- <strong>A record of changes.</strong> Account changes, corrections and removals are logged. Uploaded originals are kept unaltered. Nothing is removed without a record.
-- <strong>Safer updates.</strong> A backup is taken before each database change, and every update must pass our automated tests first.
-- <strong>Monitoring.</strong> We are alerted when the service has an error.</p>
-<p><strong>Not yet in place. We would rather say so plainly.</strong>
-- No independent security test yet.
-- Records are not yet encrypted on disk on our own server. Off-site backups are encrypted.
-- Veterans and advocates do not yet have a second sign-in step inside Evocatus beyond their Google or Microsoft account. We recommend turning on two-step sign-in on that account.</p>
+<p><strong>In place today</strong></p>
+<ul>
+<li><strong>Invite only.</strong> Nobody can sign themselves up.</li>
+<li><strong>No Evocatus password.</strong> You sign in with your own Google or Microsoft account.</li>
+<li><strong>Encrypted connections.</strong> Traffic between your browser and Evocatus uses HTTPS.</li>
+<li><strong>Separation between users</strong> inside the database, tested on every update.</li>
+<li><strong>The administrator area</strong> needs a second sign-in step.</li>
+<li><strong>A record of changes.</strong> Account changes, corrections and removals are logged. Uploaded originals are kept unaltered. Nothing is removed without a record.</li>
+<li><strong>Safer updates.</strong> A backup is taken before each database change, and every update must pass our automated tests first.</li>
+<li><strong>Monitoring.</strong> We are alerted when the service has an error.</li>
+<li><strong>Identifiers removed before AI reading</strong> (section 6.1), with a record of every page sent.</li>
+</ul>
+<p><strong>Not yet in place. We would rather say so plainly.</strong></p>
+<ul>
+<li>No independent security test yet.</li>
+<li>Records are not yet encrypted on disk on our own server. Off-site backups are encrypted.</li>
+<li>Veterans and advocates do not yet have a second sign-in step inside Evocatus beyond their Google or Microsoft account. We recommend turning on two-step sign-in on that account.</li>
+<li>Names and details in handwriting, photos and unreadable scans cannot yet be removed before AI reading.</li>
+</ul>
 <p>No system is perfectly secure.</p>
 <h2>11. Data breaches</h2>
 <p>If we find, or suspect, that your information has been accessed, lost or disclosed without authority, we will act quickly to contain it and assess it within 30 days at most. If serious harm to you is likely, we will tell you and the Office of the Australian Information Commissioner (OAIC) as soon as we can, as the Notifiable Data Breaches scheme requires. We have a written response plan.</p>
