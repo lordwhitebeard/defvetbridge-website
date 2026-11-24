@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Security | Evocatus</title>
+<meta name="description" content="How Evocatus keeps veterans' records safe: Australian storage and AI reading, identifiers removed before AI reading, invite-only sign-in and more.">
+<link rel="canonical" href="https://www.evocatus.com.au/security">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>(function(){function ck(n){var m=document.cookie.match("(?:^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[1]):null}var d=document.documentElement,t=ck("dvb-theme");try{t=t||localStorage.getItem("dvb-theme")}catch(e){}if(t&&t!=="light")d.setAttribute("data-theme",t);if(ck("dvb-colours")==="1")d.classList.add("colours-picked")})()</script>
+<style>
+:root{
+  --paper:#f4f6f5;      /* page ground, slight green bias */
+  --sheet:#ffffff;      /* cards and the sample record */
+  --ink:#102f4c;        /* wordmark navy: headings and body text */
+  --ink-soft:#4a5d70;   /* secondary text */
+  --green:#1d432e;      /* wordmark green */
+  --gold:#b88f40;       /* wordmark gold: main buttons, the one warm accent */
+  --gold-soft:#f3e6c6;  /* highlighter on the sample record */
+  --rule:#d9e0e4;       /* hairlines */
+  --on-accent:#ffffff;  /* text on green buttons and badges */
+  --field:#b9c4cb;      /* form field borders */
+  --err:#9a2b1d;
+  --band:#102f4c;       /* the dark Support panel */
+  --band-ink:#ffffff;
+  --band-soft:#c9d5e1;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --typed:"Courier New",Courier,"Liberation Mono",monospace;  /* typed service-record entries */
+  --wrap:68rem;
+  color-scheme:light;
+}
+/* Themes: the same seven as the app (colours from app/static/style.css). Only colour tokens change. */
+:root[data-theme="defvetbridge"]{--paper:#0B1426;--sheet:#142236;--ink:#E2E8F0;--ink-soft:#94A3B8;--green:#14B8A6;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#223349;--on-accent:#0B1426;--field:#2E4560;--err:#f87171;--band:#0F2A3A;--band-ink:#E2E8F0;--band-soft:#A9B8CB;color-scheme:dark}
+:root[data-theme="dark"]{--paper:#13171F;--sheet:#181C25;--ink:#DFE3EB;--ink-soft:#9CA3AF;--green:#60A5FA;--gold:#D4A94A;--gold-soft:rgba(212,169,74,.22);--rule:#2A3140;--on-accent:#0B1220;--field:#3A4352;--err:#f87171;--band:#1E2633;--band-ink:#DFE3EB;--band-soft:#A7AFBC;color-scheme:dark}
+:root[data-theme="army"]{--paper:#1F2318;--sheet:#2B3020;--ink:#E8E4D8;--ink-soft:#A8A392;--green:#C9A227;--gold:#C9A227;--gold-soft:rgba(201,162,39,.2);--rule:#3D4530;--on-accent:#1F2318;--field:#4A5339;--err:#E06A5A;--band:#2B3020;--band-ink:#E8E4D8;--band-soft:#BDB8A6;color-scheme:dark}
+:root[data-theme="navy"]{--paper:#051233;--sheet:#0C1F4D;--ink:#E6ECF5;--ink-soft:#9AAAC4;--green:#D4AF37;--gold:#D4AF37;--gold-soft:rgba(212,175,55,.2);--rule:#1B2E5C;--on-accent:#051233;--field:#2A4170;--err:#f87171;--band:#0C1F4D;--band-ink:#E6ECF5;--band-soft:#AFBDD4;color-scheme:dark}
+:root[data-theme="airforce"]{--paper:#071A2E;--sheet:#0F2A47;--ink:#E4F1FB;--ink-soft:#8FB4D6;--green:#4FA8DA;--gold:#D4A94A;--gold-soft:rgba(79,168,218,.2);--rule:#1C3A5E;--on-accent:#071A2E;--field:#2A4C73;--err:#f87171;--band:#0F2A47;--band-ink:#E4F1FB;--band-soft:#A9C6E0;color-scheme:dark}
+:root[data-theme="colourblind"]{--paper:#FAFAFA;--sheet:#FFFFFF;--ink:#1A1A1A;--ink-soft:#595959;--green:#0072B2;--gold:#E69F00;--gold-soft:#FBE3B3;--rule:#C9C9C9;--on-accent:#FFFFFF;--field:#8C8C8C;--err:#D55E00;--band:#1A1A1A;--band-ink:#FFFFFF;--band-soft:#D9D9D9;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);padding-inline:max(16px,4vw)}
+a{color:var(--green)}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.doc{max-width:46rem;margin:0 auto;padding:1.5rem 0 4rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+.top img{height:44px;width:auto;display:block}
+.top nav a{margin-left:1rem;font-weight:600;text-decoration:none}
+h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:2.2rem 0 .6rem;line-height:1.25}
+h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
+p,li{max-width:44rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem;background:var(--sheet)}
+th,td{border:1px solid var(--rule);padding:.5rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--paper)}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.wrapt{overflow-x:auto}
+footer{border-top:1px solid var(--rule);margin-top:3rem;padding-top:1rem;font-size:.9rem;color:var(--ink-soft)}
+footer a{margin-right:1rem}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="top"><a href="/" aria-label="Evocatus home"><img src="Evocatus_logo_wide.png" alt="Evocatus"></a>
+<nav aria-label="Legal"><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></header>
+<main>
+<h1>How Evocatus keeps your records safe</h1>
+<p>Evocatus was built by a veteran, for veterans. Your service and medical records are some of the most personal things you own, and every part of Evocatus is designed around protecting them.</p>
+<h2>Your records stay in Australia</h2>
+<ul>
+<li><strong>Australian storage.</strong> Your files and database live on a server in Queensland.</li>
+<li><strong>Australian AI reading.</strong> Documents are read through Amazon Web Services' Sydney and Melbourne data centres only. Evocatus refuses to start, and refuses each request, if anything would send them elsewhere.</li>
+<li><strong>Australian backups.</strong> Every night an encrypted copy goes to AWS storage in Sydney. It is locked with a key only Evocatus holds before it leaves, so nobody else can read it.</li>
+</ul>
+<h2>Your name stays with you</h2>
+<ul>
+<li><strong>Identifiers removed before AI reading.</strong> Your name, date of birth, service and DVA file numbers, address, phone and email are taken off each page before the AI sees it. The AI reads medical text with no owner attached.</li>
+<li><strong>Never used to train AI.</strong> Your records are read to help you, and that is all.</li>
+<li><strong>One switch stops all AI reading.</strong> Evocatus keeps working without it.</li>
+</ul>
+<h2>Only the right people get in</h2>
+<ul>
+<li><strong>Invite only.</strong> Nobody can sign themselves up.</li>
+<li><strong>No passwords to steal.</strong> You sign in with your own Google or Microsoft account, protected by their security.</li>
+<li><strong>A second sign-in step for the admin area.</strong></li>
+<li><strong>You choose your advocate.</strong> An advocate sees your records only when they are linked to your account.</li>
+</ul>
+<h2>Walls between every veteran</h2>
+<ul>
+<li><strong>Row-level security</strong> inside the database keeps each veteran's records separate, table by table.</li>
+<li><strong>Fails closed.</strong> If Evocatus ever cannot tell whose records a request is for, it shows nothing.</li>
+<li><strong>Tested on every single update.</strong></li>
+</ul>
+<h2>Nothing happens without a record</h2>
+<ul>
+<li><strong>Consent before your first upload,</strong> recorded with the exact wording you agreed to.</li>
+<li><strong>Your originals are never altered.</strong> Uploaded documents are kept exactly as you gave them.</li>
+<li><strong>Every change leaves a trail.</strong> Account changes, corrections and removals are logged.</li>
+<li><strong>Your right to leave.</strong> Ask to delete your account and everything goes, with a 30-day window to change your mind.</li>
+</ul>
+<h2>Built carefully, checked constantly</h2>
+<ul>
+<li><strong>More than 4,100 automated tests</strong> must pass before any update goes live.</li>
+<li><strong>A backup before every database change.</strong></li>
+<li><strong>Software checked for known security flaws</strong> on every update.</li>
+<li><strong>Monitored around the clock,</strong> with instant alerts and a health page that checks 20 parts of the system.</li>
+<li><strong>A written plan for data breaches,</strong> in line with Australia's Notifiable Data Breaches scheme.</li>
+<li><strong>Regular security reviews,</strong> with every finding tracked to a fix.</li>
+</ul>
+<h2>Your information is never for sale</h2>
+<ul>
+<li><strong>No selling, no advertising.</strong></li>
+<li><strong>Encrypted connections</strong> (HTTPS) from your browser to Evocatus.</li>
+<li><strong>A free preview that sends nothing to AI.</strong> You see what Evocatus finds before any paid reading starts.</li>
+</ul>
+<h2>For firms: Evocatus Professional</h2>
+<p>Evocatus Professional runs on the firm's own machine, with its disk fully encrypted, so client records never leave the office.</p>
+<hr />
+<p>The full detail is in our <a href="/privacy">Privacy Policy</a>. Questions about your privacy? Email <strong>admin@evocatus.com.au</strong>.</p>
+<p><strong>Last updated:</strong> 24/11/2026</p>
+</main>
+<footer><a href="/">Evocatus home</a><a href="/security">Security</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:admin@evocatus.com.au">admin@evocatus.com.au</a>
+<p>Evocatus is a business name of Graham Charles Kissell, sole trader, ABN 38 805 236 305, Brisbane, Queensland. It is not part of, or endorsed by, the Department of Veterans' Affairs or the Department of Defence.</p></footer>
+</div>
+</body>
+</html>
