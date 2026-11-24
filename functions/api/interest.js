@@ -1,4 +1,4 @@
-// DefVetBridge: "Register your interest" form handler (Cloudflare Pages Function, POST /api/interest).
+// Evocatus: "Register your interest" form handler (Cloudflare Pages Function, POST /api/interest).
 // Saves each sign-up to the D1 database bound as DB (Pages project > Settings > Bindings > D1, variable name DB).
 // No third parties. Spam checks: a hidden honeypot field and a minimum time on the page.
 // View sign-ups: Cloudflare > Storage & Databases > D1 > dvb-interest > Console:
@@ -84,10 +84,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
 }
 
 // ---------- emails (Resend) ----------
-const SITE = "https://www.defvetbridge.com";
+const SITE = "https://www.evocatus.com.au";
 const GUIDE = SITE + "/VeteransGuide.pdf";
-const FROM = "Graham at DefVetBridge <admin@defvetbridge.com>";
-const ADMIN = "admin@defvetbridge.com";
+const FROM = "Graham at Evocatus <admin@evocatus.com.au>";
+const ADMIN = "admin@evocatus.com.au";
 const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 async function resend(env, msg) {
@@ -104,32 +104,32 @@ function welcome(rec) {
   const text = [
     `Hi ${first},`,
     ``,
-    `Thanks for registering your interest in DefVetBridge. You are on the list, and I will email you when there is a place for you.`,
+    `Thanks for registering your interest in Evocatus. You are on the list, and I will email you when there is a place for you.`,
     ``,
     `While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive.`,
     `Free guide, "Veterans Guide" (PDF): ${GUIDE}`,
     ``,
     `Graham Kissell`,
-    `DefVetBridge | ${SITE}`,
+    `Evocatus | ${SITE}`,
     ``,
-    `You are receiving this because you registered your interest at defvetbridge.com. To be taken off the list, reply with "remove" or email ${ADMIN}.`,
+    `You are receiving this because you registered your interest at evocatus.com.au. To be taken off the list, reply with "remove" or email ${ADMIN}.`,
     `Need support now? Open Arms, Veterans & Families Counselling: 1800 011 046, free, 24 hours a day.`,
   ].join("\n");
   const btn = (href, label, bg, fg) =>
     `<a href="${href}" style="display:inline-block;background:${bg};color:${fg};font-weight:700;text-decoration:none;padding:12px 20px;border-radius:6px">${label}</a>`;
   const html = `<!doctype html><html><body style="margin:0;background:#f4f6f5;padding:24px 12px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#102f4c">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #d9e0e4;border-radius:10px">
-<tr><td style="padding:28px 28px 8px"><img src="${SITE}/DVB_wordmark.png" alt="DVB" width="104" height="48" style="display:block"></td></tr>
+<tr><td style="padding:28px 28px 8px"><img src="${SITE}/apple-touch-icon.png" alt="Evocatus" width="48" height="48" style="display:inline-block;vertical-align:middle;border-radius:8px"> <b style="font:800 20px/48px Arial,sans-serif;letter-spacing:3px;color:#102f4c;vertical-align:middle;padding-left:10px">EVOCATUS</b></td></tr>
 <tr><td style="padding:8px 28px 4px;font-size:16px;line-height:1.6">
 <p style="margin:0 0 14px">Hi ${esc(first)},</p>
-<p style="margin:0 0 14px">Thanks for registering your interest in <b>DefVetBridge</b>. You are on the list, and I will email you when there is a place for you.</p>
+<p style="margin:0 0 14px">Thanks for registering your interest in <b>Evocatus</b>. You are on the list, and I will email you when there is a place for you.</p>
 <p style="margin:0 0 18px">While you wait, the best thing you can do is start gathering your records. Defence and DVA records can take around 30 days to arrive, and this free plain-English guide shows you where to find them and how to ask for them.</p>
 <p style="margin:0 0 22px">${btn(GUIDE, "Get the free guide (PDF)", "#1d432e", "#ffffff")}</p>
 <p style="margin:0 0 4px">Graham Kissell</p>
-<p style="margin:0 0 24px"><a href="${SITE}" style="color:#1d432e">DefVetBridge</a></p>
+<p style="margin:0 0 24px"><a href="${SITE}" style="color:#1d432e">Evocatus</a></p>
 </td></tr>
 <tr><td style="padding:16px 28px 24px;border-top:1px solid #d9e0e4;font-size:12px;line-height:1.5;color:#4a5d70">
-You are receiving this because you registered your interest at defvetbridge.com. To be taken off the list, reply with "remove" or email <a href="mailto:${ADMIN}" style="color:#4a5d70">${ADMIN}</a>.<br>
+You are receiving this because you registered your interest at evocatus.com.au. To be taken off the list, reply with "remove" or email <a href="mailto:${ADMIN}" style="color:#4a5d70">${ADMIN}</a>.<br>
 Need support now? Open Arms, Veterans &amp; Families Counselling: 1800 011 046, free, 24 hours a day.
 </td></tr></table></body></html>`;
   return { text, html };
@@ -137,10 +137,10 @@ Need support now? Open Arms, Veterans &amp; Families Counselling: 1800 011 046, 
 
 async function sendEmails(env, rec) {
   const w = welcome(rec);
-  await resend(env, { from: FROM, to: [rec.email], reply_to: ADMIN, subject: "You're on the DefVetBridge list", text: w.text, html: w.html });
+  await resend(env, { from: FROM, to: [rec.email], reply_to: ADMIN, subject: "You're on the Evocatus list", text: w.text, html: w.html });
   const note = [`New interest sign-up`, ``, `Name: ${rec.name}`, `Email: ${rec.email}`, `I am a: ${rec.role}`,
     `State: ${rec.state || "-"}`, `Message: ${rec.message || "-"}`].join("\n");
-  await resend(env, { from: FROM, to: [ADMIN], reply_to: rec.email, subject: `New DVB sign-up: ${rec.name} (${rec.role})`, text: note });
+  await resend(env, { from: FROM, to: [ADMIN], reply_to: rec.email, subject: `New Evocatus sign-up: ${rec.name} (${rec.role})`, text: note });
 }
 
 // ---------- mailing list (Resend contacts) ----------
