@@ -43,8 +43,10 @@ a{color:var(--green)}
 a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
 .doc{max-width:46rem;margin:0 auto;padding:1.5rem 0 4rem}
 .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
-.top img{height:88px;width:auto;display:block}
-@media (max-width:640px){.top img{height:64px}}
+.top .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--ink)}
+.top .brand img{height:60px;width:auto;display:block}
+.top .brand span{font-weight:800;font-size:1.8rem;letter-spacing:.14em;line-height:1}
+@media (max-width:640px){.top .brand img{height:46px}.top .brand span{font-size:1.35rem}}
 .top nav a{margin-left:1rem;font-weight:600;text-decoration:none}
 h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-.01em}
 h2{font-size:1.35rem;margin:2.2rem 0 .6rem;line-height:1.25}
@@ -61,7 +63,7 @@ footer a{margin-right:1rem}
 </head>
 <body>
 <div class="doc">
-<header class="top"><a href="/" aria-label="Evocatus home"><img src="Evocatus_logo_wide.png" alt="Evocatus"></a>
+<header class="top"><a class="brand" href="/" aria-label="Evocatus home"><img src="Evocatus_emblem.svg" alt="" width="71" height="60"><span>EVOCATUS</span></a>
 <nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></header>
 <main>
 <h1>Evocatus Terms of Service</h1>
